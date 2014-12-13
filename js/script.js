@@ -2,7 +2,11 @@ $(function() {
 	var total = 0;
 	var $test = $('.test');
 	console.dir($test);
-	console.dir($test.length);
+	console.log($test.length);
+	
+	var $select = $('select');
+	console.dir($select);
+	
 	$test.change(function(){
 		if ($(this).is(':checked')) {
 			console.log("on");
@@ -15,5 +19,9 @@ $(function() {
 		}
 		console.log("total : " + total);
 	});
-	
+
+	$select.change(function(){
+		console.log($(this).attr('name'));
+		console.log(parseInt($(this).val()));
+	});
 })
