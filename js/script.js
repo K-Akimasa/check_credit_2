@@ -18,6 +18,7 @@ $(function() {
 			total -= parseInt($(this).attr('value'));
 		}
 		console.log("total : " + total);
+		$('#popup p').html("全部で" + total + "です");
 	});
 
 	$select.change(function(){
@@ -27,8 +28,5 @@ $(function() {
 });
 
 $(function() {
-	var $popup = $('#popup p');
-	console.dir($popup);
-	console.log($popup.html());
-	$popup.html("全部で" + total + "です");
+	$('#popup p').html("全部で" + total + "です");
 });
