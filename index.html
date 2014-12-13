@@ -9,11 +9,6 @@
 <script src="./js/jquery-1.11.1.js"></script>
 <script src="./js/jquery.mobile-1.4.5.min.js"></script>
 <script src="./js/script.js"></script>
-<!--[if lt IE 9]>
-<script src="http://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv-printshiv.min.js"></script>
-<![endif]-->
-<!--[if lt IE 8]>
-<![endif]-->
 </head>
 <body>
 <div data-role="page" data-title="単位足りてる?">
@@ -23,12 +18,28 @@
 	</div>
 	
 	<div role="main" class="ui-content">
-			<fieldset data-role="controlgroup">
-				<input id="test_chk1" name="test_chk1" type="checkbox" value="3.14">
-				<label for="test_chk1">TEST1</label>
-				<input id="test_chk2" name="test_chk2" type="checkbox" value="1.414">
-				<label for="test_chk2">TEST2</label>
-			</fieldset>
+		<fieldset id="chk1" data-role="controlgroup">
+			<label for="test_chk1">TEST1</label>
+			<input class="test" id="test_chk1" name="テスト1" type="checkbox" value="2">
+			
+			<label for="test_chk2">TEST2</label>
+			<input class="test" id="test_chk2" name="テスト2" type="checkbox" value="2">
+			
+			<label for="index1">インデックス1:</label>
+			<select id="index1" name="index1" data-iconpos="right">
+				<option value="1">1</option>
+				<option value="2">2</option>
+				<option value="3">3</option>
+			</select>
+			
+			<label for="index2">インデックス2:</label>
+			<select id="index2" name="index2" data-iconpos="right">
+				<option value="1">1</option>
+				<option value="2">2</option>
+				<option value="3">3</option>
+			</select>
+			
+		</fieldset>
 	</div>
 	
 	<div data-role="footer" data-theme="a">
