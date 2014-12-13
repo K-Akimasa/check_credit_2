@@ -15,6 +15,20 @@
 
 	<div data-role="header" data-theme="b" data-position="fixed">
 		<h1>単位足りてる?</h1>
+		<a href="#popup" data-rel="popup" data-transition="pop" class="ui-btn ui-btn-a ui-btn-right">result</a>
+	</div>
+	
+	<!--1ダイアログ風のポップアップを準備-->
+	<div id="popup" data-role="popup" data-overlay-theme="b" data-dismissible="false" style="max-width:500px;">
+		<div data-role="header" data-theme="b">
+			<h1>テストダイアログ</h1>
+		</div> 
+		<div role="main" class="ui-content">
+			<p>サンプルファイルをダウンロードしますか？</p>
+			<!--2ダイアログを閉じるためのボタン -->
+			<a href="#" data-rel="back" class="ui-btn ui-btn-inline ui-corner-all ui-btn-b">ダウンロード</a>
+			<a href="#" data-rel="back" class="ui-btn ui-btn-inline ui-corner-all">閉じる</a>
+		</div>
 	</div>
 	
 	<div role="main" class="ui-content">

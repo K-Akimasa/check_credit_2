@@ -1,5 +1,5 @@
+var total = 0;
 $(function() {
-	var total = 0;
 	var $test = $('.test');
 	console.dir($test);
 	console.log($test.length);
@@ -24,4 +24,11 @@ $(function() {
 		console.log($(this).attr('name'));
 		console.log(parseInt($(this).val()));
 	});
-})
+});
+
+$(function() {
+	var $popup = $('#popup p');
+	console.dir($popup);
+	console.log($popup.html());
+	$popup.html("全部で" + total + "です");
+});
