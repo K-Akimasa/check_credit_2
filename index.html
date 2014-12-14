@@ -13,54 +13,76 @@
 <body>
 <div data-role="page" data-title="単位足りてる?">
 
+	<!-- ヘッダー -->
 	<div data-role="header" data-theme="b" data-position="fixed">
 		<h1>単位足りてる?</h1>
-		<a href="#popup" data-rel="popup" data-transition="pop" class="ui-btn ui-btn-a ui-btn-right">result</a>
-	</div>
+		<a id="result" href="#popup" data-rel="popup" data-transition="flip" class="ui-btn ui-btn-a ui-btn-right">result</a>
+	</div><!-- data-role="header" -->
 	
-	<!--1ダイアログ風のポップアップを準備-->
+	<!-- ダイアログ風のポップアップを準備 -->
 	<div id="popup" data-role="popup" data-overlay-theme="b" data-position-to="window" data-dismissible="false" style="width:100%;height:100%;">
 		<div data-role="header" data-theme="b">
 			<h1>結果</h1>
-		</div> 
+		</div> <!-- data-role="header" -->
 		<div role="main" class="ui-content">
 			<p></p>
 			<!--2ダイアログを閉じるためのボタン -->
 			<a href="#" data-rel="back" class="ui-btn ui-btn-inline ui-corner-all">閉じる</a>
-		</div>
+		</div><!-- role="main" -->
 	</div>
 	
+	<!-- メイン -->
 	<div role="main" class="ui-content">
-		<fieldset id="chk1" data-role="controlgroup">
-			<label for="test_chk1">TEST1</label>
-			<input class="test" id="test_chk1" name="テスト1" type="checkbox" value="2">
-			
-			<label for="test_chk2">TEST2</label>
-			<input class="test" id="test_chk2" name="テスト2" type="checkbox" value="2">
-			
-			<label for="index1"></label>
-			<select id="index1" name="index1" data-iconpos="right">
-				<option value="">人文科目</option>
-				<option value="1">1</option>
-				<option value="2">2</option>
-				<option value="3">3</option>
-				</select>
-			
-			<label for="index2"></label>
-			<select id="index2" name="index2" data-iconpos="right">
-				<option value="">社会科学</option>
-				<option value="1">1</option>
-				<option value="2">2</option>
-				<option value="3">3</option>
-			</select>	
-		</fieldset>
-</div>
-	</div>
-	
+		<div id="基盤教育科目">
+			<fieldset data-role="controlgroup">
+				<!-- チェックボックス -->
+				<label for="新入生セミナー">新入生セミナー</label>
+				<input id="新入生セミナー" name="新入生セミナー" type="checkbox" value="2">		
+				<label for="Integrated English IA">Integrated English IA</label>
+				<input id="Integrated English IA" name="Integrated English IA" type="checkbox" value="2">
+				<label for="Integrated English IB">Integrated English IB</label>
+				<input id="Integrated English IB" name="Integrated English IB" type="checkbox" value="2">
+				<label for="Integrated English IIA">Integrated English IIA</label>
+				<input id="Integrated English IIA" name="Integrated English IIA" type="checkbox" value="2">	
+				<label for="Integrated English IIB">Integrated English IIB</label>
+				<input id="Integrated English IIB" name="Integrated English IIB" type="checkbox" value="2">
+				<label for="Advanced English (前期)">Advanced English (前期)</label>
+				<input id="Advanced English (前期)" name="Advanced English (前期)" type="checkbox" value="2">
+				<label for="Advanced English（後期）">Advanced English（後期）</label>
+				<input id="Advanced English（後期）" name="Advanced English（後期）" type="checkbox" value="2">
+				<label for="情報処理基礎">情報処理基礎</label>
+				<input id="情報処理基礎" name="情報処理基礎" type="checkbox" value="2">
+				<label for="スポーツと健康">スポーツと健康</label>
+				<input id="スポーツと健康" name="スポーツと健康" type="checkbox" value="2">
+				<label for="微分積分学及演習I">微分積分学及演習I</label>
+				<input id="微分積分学及演習I" name="微分積分学及演習I" type="checkbox" value="2">
+				<label for="微分積分学及演習II">微分積分学及演習II</label>
+				<input id="微分積分学及演習II" name="微分積分学及演習II" type="checkbox" value="2">						
+				<!-- セレクトボタン -->	
+				<label for="人文科目"></label>
+				<select id="人文科目" name="人文科目" data-iconpos="right">
+					<option value="">人文科目</option>
+					<option value="1">1</option>
+					<option value="2">2</option>
+					<option value="3">3</option>
+					<option value="4">4</option>
+					<option value="5">5</option>
+				</select><!-- 人文科目 -->
+				<label for="社会科学"></label>
+				<select id="社会科学" name="社会科学" data-iconpos="right">
+					<option value="">社会科学</option>
+					<option value="1">1</option>
+					<option value="2">2</option>
+					<option value="3">3</option>
+					<option value="4">4</option>
+					<option value="5">5</option>
+				</select><!-- 社会科学 -->
+			</fieldset>
+		</div><!-- id="基盤教育科目" -->
+	</div><!-- role="main" -->
 	<div data-role="footer" data-theme="a">
 		Copyright 2014, K-Akimasa
-	</div>
-	
-</div>
+	</div><!-- data-role="footer" -->
+</div><!-- data-role="page" -->
 </body>
 </html>

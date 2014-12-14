@@ -1,32 +1,55 @@
 var total = 0;
+var kiban_total = 0;
+var humanity_total = 0;
+var society_total = 0;
+
 $(function() {
-	var $test = $('.test');
-	console.dir($test);
-	console.log($test.length);
+	/*** 初期化 ***/
+	var $container = $('#基盤教育科目');
+	var $checkbox = $container.find(':checkbox');
+	var $humanity_select = $container.find('#人文科目');
+	var $society_select = $container.find('#社会科学');
 	
-	var $select = $('select');
-	console.dir($select);
-	
-	$test.change(function(){
+	/*** イベント設定 ***/
+	// 基盤教育基礎科目のチェックボックスのイベント設定
+	$checkbox.change(function(){
 		if ($(this).is(':checked')) {
-			console.log("on");
 			console.log("\t" + $(this).attr('name'));
 			console.log("\t" + $(this).attr('value'));
-			total += parseInt($(this).attr('value'));
+			kiban_total += parseInt($(this).attr('value'));
 		} else {
-			console.log("off");
-			total -= parseInt($(this).attr('value'));
+			kiban_total -= parseInt($(this).attr('value'));
 		}
-		console.log("total : " + total);
-		$('#popup p').html("全部で" + total + "です");
+		console.log("\t" + "total : " + total);
 	});
 
-	$select.change(function(){
+	// 基盤教育基礎科目（人文科目）のセレクトのイベント設定
+	$humanity_select.change(function(){
 		console.log($(this).attr('name'));
 		console.log(parseInt($(this).val()));
+		humanity_total = parseInt($(this).val()) * 2;
+		console.log("\t" + humanity_total);
+	});
+	
+	// 基盤教育基礎科目（社会科目）のセレクトのイベント設定
+	$society_select.change(function(){
+		console.log($(this).attr('name'));
+		console.log(parseInt($(this).val()));
+		society_total = parseInt($(this).val()) * 2;
+		console.log("\t" + society_total);
 	});
 });
 
 $(function() {
-	$('#popup p').html("全部で" + total + "です");
+	/*** 初期化 ***/
+	var $result = $('#result');
+	// ダイアログのメッセージをセットする
+	$result.click(function () {
+		$('#popup p').html(
+			"基盤教育基礎科目 : " + kiban_total + "<br />"
+			+ "人文科目 : " + humanity_total + "<br />"
+			+ "社会科目" + society_total + "<br />"
+			+ "計 : " + (kiban_total + humanity_total + society_total) + "<br />"
+		);
+	});
 });
