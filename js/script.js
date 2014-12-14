@@ -46,10 +46,10 @@ $(function() {
 	// ダイアログのメッセージをセットする
 	$result.click(function () {
 		$('#popup p').html(
-			"基盤教育基礎科目 : " + kiban_total + "<br />"
-			+ "人文科目 : " + humanity_total + "<br />"
-			+ "社会科目" + society_total + "<br />"
-			+ "計 : " + (kiban_total + humanity_total + society_total) + "<br />"
+			"基盤教育基礎科目 : " + String(kiban_total) + "<br />"
+			+ "人文科目 : " + String(humanity_total) + "<br />"
+			+ "社会科目：" + String(society_total) + "<br />"
+			+ "計 : " + String(kiban_total + humanity_total + society_total) + "<br />"
 		);
 	});
 });
