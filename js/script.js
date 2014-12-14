@@ -1,3 +1,4 @@
+/* 単位管理オブジェクト */
 var credit_num = {
 	kiban_total : 0,
 	humanity_total : 0,
@@ -17,9 +18,8 @@ $(function() {
 	var $result = $('#result');
 	// ダイアログのメッセージをセットする
 	$result.click(function () {
-		var non_sbjs = '<b>未履修科目</b>:<br />';
+		var non_sbjs = '';
 		var kiban_non_length = credit_num.kiban_non_comp_sbjs.length;
-		//console.log(credit_num.kiban_non_comp_sbjs.length);
 		for (var i = 0; i < kiban_non_length; i++) {
 			if (credit_num.kiban_non_comp_sbjs[i]) {
 				console.log(credit_num.kiban_non_comp_sbjs[i]);
@@ -31,8 +31,9 @@ $(function() {
 			+ "人文科目 : " + String(credit_num.humanity_total) + "<br />"
 			+ "社会科目：" + String(credit_num.society_total) + "<br />"
 			+ "計 : " + String(credit_num.getTotal()) + "<br />"
-			+ non_sbjs
 		);
+		
+		$('#popup #kiban_non_sbjs p').html(non_sbjs);
 	});
 });
 
