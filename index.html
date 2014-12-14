@@ -26,12 +26,52 @@
 		</div> <!-- data-role="header" -->
 		<div role="main" class="ui-content">
 			<p></p>
-			<div id="kiban_non_sbjs" data-role="collapsible">
-				<h3>基盤教育科目の未履修科目</h3>
-				<p></p>
+			<!-- 
+			<div id="取得単位数表示" style="padding: 5px;">
+				<ul data-role="listview">
+					<li data-role="list-divider">基盤教育基礎科目</li>
+					<li>あああ</li>
+					<li>いいい</li>
+					<li data-role="list-divider">専門基礎科目</li>
+					<li>ううう</li>
+					<li>えええ</li>
+					<li>おおお</li>
+					<li>かかか</li>
+					<li data-role="list-divider">専門必修科目</li>
+					<li>ききき</li>
+					<li>けけけ</li>
+				</ul>
+			</div>
+			-->
+			<div id="未履修科目表示" style="padding: 5px;">
+				<fieldset data-role="controlgroup">
+				<div id="kiban_non_sbjs" data-role="collapsible">
+					<h3>基盤教育科目の未履修科目</h3>
+					<p></p>
+				</div>
+				<div id="cmn_non_sbjs" data-role="collapsible">
+					<h3>共通専門基礎科目</h3>
+					<p></p>
+				</div>
+				<div id="pro_non_sbjs" data-role="collapsible">
+					<h3>専門必修科目</h3>
+					<p></p>
+				</div>
+				<div id="a_non_sbjs" data-role="collapsible">
+					<h3>専門選択A郡</h3>
+					<p></p>
+				</div>
+			</fieldset>
 			</div>
 			<!--2ダイアログを閉じるためのボタン -->
-			<a href="#" data-rel="back" class="ui-btn ui-btn-inline ui-corner-all">閉じる</a>
+			<div class="ui-grid-a">
+				<div class="ui-block-a">
+					<a href="javascript:void(0);" id="tweet" class="ui-btn ui-corner-all">つぶやく</a>
+				</div>
+				<div class="ui-block-b">
+					<a href="#" data-rel="back" class="ui-btn ui-corner-all">閉じる</a>
+				</div>
+			</div>
 		</div><!-- role="main" -->
 	</div><!-- id="popup" -->
 	

@@ -13,6 +13,16 @@ var credit_num = {
 };
 
 /*
+ * つぶやき
+ */
+$(function() {
+	var $tweet_btn = $('#tweet');
+	$tweet_btn.click(function(){
+		window.open('http://twitter.com/home?status='+encodeURI(document.title)+'%20'+encodeURI(location.href)+'+%23単位単位足りてる？','_blank');
+  	});
+});
+
+/*
  * ダイアログの設定
  */
 $(function() {
@@ -31,6 +41,7 @@ $(function() {
 			}
 		}
 		
+		
 		// 基盤教育の結果設定
 		$('#popup p').html(
 			"基盤教育基礎科目 : "	+ String(credit_num.kiban_total)	+ "<br />"
@@ -41,6 +52,7 @@ $(function() {
 		
 		// 基盤教育の未履修科目の設定
 		$('#popup #kiban_non_sbjs p').html(non_sbjs_msg);
+		
 	});
 });
 
