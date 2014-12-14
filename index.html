@@ -19,7 +19,7 @@
 		<a id="result" href="#popup" data-rel="popup" data-transition="flip" class="ui-btn ui-btn-a ui-btn-right">result</a>
 	</div><!-- data-role="header" -->
 	
-	<!-- ダイアログ風のポップアップを準備 -->
+	<!-- ダイアログ風のポップアップ -->
 	<div id="popup" data-role="popup" data-overlay-theme="b" data-position-to="window" data-dismissible="false" style="width:100%;height:100%;">
 		<div data-role="header" data-theme="b">
 			<h1>結果</h1>
@@ -29,12 +29,14 @@
 			<!--2ダイアログを閉じるためのボタン -->
 			<a href="#" data-rel="back" class="ui-btn ui-btn-inline ui-corner-all">閉じる</a>
 		</div><!-- role="main" -->
-	</div>
+	</div><!-- id="popup" -->
 	
 	<!-- メイン -->
 	<div role="main" class="ui-content">
 		<div id="基盤教育科目">
-			<fieldset data-role="controlgroup">
+			<div data-role="collapsible">
+				<h3>基盤教育科目</h3>
+				<fieldset data-role="controlgroup">
 				<!-- チェックボックス -->
 				<label for="新入生セミナー">新入生セミナー</label>
 				<input id="新入生セミナー" name="新入生セミナー" type="checkbox" value="2">		
@@ -61,26 +63,29 @@
 				<!-- セレクトボタン -->	
 				<label for="人文科目"></label>
 				<select id="人文科目" name="人文科目" data-iconpos="right">
-					<option value="0">人文科目</option>
-					<option value="1">1</option>
-					<option value="2">2</option>
-					<option value="3">3</option>
-					<option value="4">4</option>
-					<option value="5">5</option>
-				</select><!-- 人文科目 -->
+						<option value="0">人文科目</option>
+						<option value="1">1</option>
+						<option value="2">2</option>
+						<option value="3">3</option>
+						<option value="4">4</option>
+						<option value="5">5</option>
+					</select><!-- 人文科目 -->
 				<label for="社会科学"></label>
 				<select id="社会科学" name="社会科学" data-iconpos="right">
-					<option value="0">社会科学</option>
-					<option value="1">1</option>
-					<option value="2">2</option>
-					<option value="3">3</option>
-					<option value="4">4</option>
-					<option value="5">5</option>
-				</select><!-- 社会科学 -->
+						<option value="0">社会科学</option>
+						<option value="1">1</option>
+						<option value="2">2</option>
+						<option value="3">3</option>
+						<option value="4">4</option>
+						<option value="5">5</option>
+					</select><!-- 社会科学 -->
 			</fieldset>
+			</div><!-- data-role="collapsible" -->
 		</div><!-- id="基盤教育科目" -->
 	</div><!-- role="main" -->
-	<div data-role="footer" data-theme="a">
+	
+	<!-- フッター -->
+	<div data-role="footer" data-theme="a" data-position="fixed">
 		Copyright 2014, K-Akimasa
 	</div><!-- data-role="footer" -->
 </div><!-- data-role="page" -->
