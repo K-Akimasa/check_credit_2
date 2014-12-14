@@ -18,7 +18,11 @@ var credit_num = {
 $(function() {
 	var $tweet_btn = $('#tweet');
 	$tweet_btn.click(function(){
-		window.open('http://twitter.com/home?status='+encodeURI(document.title)+'%20'+encodeURI(location.href)+'+%23単位単位足りてる？','_blank');
+		window.open('http://twitter.com/home?status='
+		+ '取得単位数は' + credit_num.getTotal() + 'です．\n' 
+		+ encodeURI(document.title)
+		+ encodeURI(location.href),
+		'_blank');
   	});
 });
 
