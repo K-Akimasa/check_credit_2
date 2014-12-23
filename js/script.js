@@ -1,9 +1,12 @@
 /* 単位管理オブジェクト */
 var credit_num = {
-	kiban_total : 0,			// 基盤教育単位数
-	humanity_total : 0,			// 人文科目単位数
-	society_total : 0,			// 社会科学単位数
-	kiban_non_comp_sbjs : [0],	// 基盤教育未履修科目
+	kiban_total : 0,					// 基盤教育単位数
+	humanity_total : 0,					// 人文科目単位数
+	society_total : 0,					// 社会科学単位数
+	kiban_non_comp_sbjs : [0],			// 基盤教育 未履修科目
+	
+	cmn_pro_base_total : 0,				// 共通専門基礎科目単位数
+	cmn_pro_base_non_comp_sbjs : [0],	// 共通専門基礎 未履修科目
 	
 	// すべての単位数を合計する
 	getTotal : function() {
@@ -16,7 +19,11 @@ var credit_num = {
  * つぶやき
  *********************************/
 $(function() {
+	/*============*/
+	/*== 初期化 ==*/
+	/*============*/
 	var $tweet_btn = $('#tweet');
+	
 	$tweet_btn.click(function(){
 		window.open('http://twitter.com/home?status='
 		+ '取得単位数は' + credit_num.getTotal() + 'です．\n' 
@@ -30,11 +37,17 @@ $(function() {
  * 集計結果のダイアログ表示設定
  *********************************/
 $(function() {
-	/*** 初期化 ***/
+	/*============*/
+	/*== 初期化 ==*/
+	/*============*/
 	var $result = $('#result');
 	var $close_btn = $('#閉じる');
 	var $result_list = $('#集計結果');
 	
+	
+	/*==================*/
+	/*== イベント設定 ==*/
+	/*==================*/
 	// ダイアログのメッセージをセットする
 	$result.click(function () {
 	
@@ -67,10 +80,16 @@ $(function() {
 		);
 		
 		$result_list.append(
+			'<li data-role="list-divider" role="heading" class="ui-li-divider ui-bar-inherit">'
+			 + "共通専門基礎科目：" + String(credit_num.cmn_pro_base_total)
+			 + '</li>'
+		);
+		
+		$result_list.append(
 			'<li class="ui-last-child ui-li-static ui-body-inherit">'
 			 + "計：" + String(credit_num.getTotal())
 			 + '</li>'
-		);
+		);		
 		
 		// 基盤教育の未履修科目の設定
 		//$('#popup #kiban_non_sbjs p').html(non_sbjs_msg);
@@ -86,12 +105,15 @@ $(function() {
  * 基盤教育科目
  *********************************/
 $(function() {
-	/*** 初期化 ***/
+	/*============*/
+	/*== 初期化 ==*/
+	/*============*/
 	var $container = $('#基盤教育科目');
 	var $checkbox = $container.find(':checkbox');// チェックボックス
 	var $humanity_select = $container.find('#人文科目');// セレクト
 	var $society_select = $container.find('#社会科学');// セレクト
 	var checkbox_length = $checkbox.length;// チェックボックスの数
+	
 	// 未履修科目配列credit_num.kiban_non_comp_sbjs[]の初期化
 	// 最初はすべて未履修
 	for (var i = 0; i < checkbox_length; i++) {
@@ -138,16 +160,73 @@ $(function() {
  * 共通専門基礎科目
  *********************************/
 $(function() {
+	/*============*/
+	/*== 初期化 ==*/
+	/*============*/
+	var $container = $('#共通専門基礎科目');
+	var $checkbox = $container.find(':checkbox');
+	var checkbox_length = $checkbox.length;// チェックボックスの数
+	
+	// 未履修科目配列credit_num.kiban_non_comp_sbjs[]の初期化
+	// 最初はすべて未履修
+	for (var i = 0; i < checkbox_length; i++) {
+		if (!$checkbox.eq(i).is(':checked')) {// チェックが入っていないならば
+			credit_num.cmn_pro_base_non_comp_sbjs[i] = $checkbox.eq(i).attr('name');
+		} else {// チェックが入っているならば
+			credit_num.cmn_pro_base_non_comp_sbjs[i] = '';
+		}
+	}
+	
+	/*==================*/
+	/*== イベント設定 ==*/
+	/*==================*/
+	$checkbox.change(function(){
+		for (var i = 0; i < checkbox_length; i++) {
+			if (!$checkbox.eq(i).is(':checked')) {
+				credit_num.cmn_pro_base_non_comp_sbjs[i] = $checkbox.eq(i).attr('name');
+			} else {
+				credit_num.cmn_pro_base_non_comp_sbjs[i] = '';
+			}
+		}
+		if ($(this).is(':checked')) {
+			credit_num.cmn_pro_base_total += parseInt($(this).attr('value'));
+		} else {
+			credit_num.cmn_pro_base_total -= parseInt($(this).attr('value'));
+		}
+	});
 });
 
 /*********************************
  * 専門必修科目
  *********************************/
 $(function() {
+	/*============*/
+	/*== 初期化 ==*/
+	/*============*/
+	var $container = $('#専門必修科目');
+	var $checkbox = $container.find(':checkbox');
+	var checkbox_length = $checkbox.length;// チェックボックスの数
+	
+	/*==================*/
+	/*== イベント設定 ==*/
+	/*==================*/
 });
 
 /*********************************
  * 専門選択A群
  *********************************/
 $(function() {
+	/*============*/
+	/*== 初期化 ==*/
+	/*============*/
+	var $container = $('#専門選択A群');
+	var $checkbox = $container.find(':checkbox');
+	var checkbox_length = $checkbox.length;// チェックボックスの数
+	
+	
+	
+	/*==================*/
+	/*== イベント設定 ==*/
+	/*==================*/
+	
 });
