@@ -12,9 +12,9 @@ var credit_num = {
 	}
 };
 
-/*
+/*********************************
  * つぶやき
- */
+ *********************************/
 $(function() {
 	var $tweet_btn = $('#tweet');
 	$tweet_btn.click(function(){
@@ -26,15 +26,19 @@ $(function() {
   	});
 });
 
-/*
- * ダイアログの設定
- */
+/*********************************
+ * 集計結果のダイアログ表示設定
+ *********************************/
 $(function() {
 	/*** 初期化 ***/
 	var $result = $('#result');
 	
+	
 	// ダイアログのメッセージをセットする
 	$result.click(function () {
+		/*** 初期化 ***/
+		var $result_list = $('#集計結果');
+	
 		// 基盤教育の未履修科目を取得する
 		var non_sbjs_msg = '';
 		var kiban_non_length = credit_num.kiban_non_comp_sbjs.length;
@@ -45,24 +49,62 @@ $(function() {
 			}
 		}
 		
+		/*
+		var num = 5;
+		for (var i = 0; i <= num; i++) {
+			if (i === 0) {
+				$result_list.append('<li class="ui-first-child ui-li-static ui-body-inherit">' + i + '</li>');
+			} else if (i === num) {
+				$result_list.append('<li class="ui-last-child ui-li-static ui-body-inherit">' + i + '</li>');
+			} else {
+				$result_list.append('<li class="ui-li-static ui-body-inherit">' + i + '</li>');
+			}
+		}
+		*/
+		
+		$result_list.append(
+			'<li data-role="list-divider" role="heading" class="ui-li-divider ui-bar-inherit">'
+			 + "基盤教育基礎科目 : " + String(credit_num.kiban_total)
+			 + '</li>'
+		);
+		
+		$result_list.append(
+			'<li class="ui-li-static ui-body-inherit">'
+			 + "人文科目 : " + String(credit_num.humanity_total)
+			 + '</li>'
+		);
+		
+		$result_list.append(
+			'<li class="ui-li-static ui-body-inherit">'
+			 + "社会科目：" + String(credit_num.society_total)
+			 + '</li>'
+		);
+		
+		$result_list.append(
+			'<li class="ui-last-child ui-li-static ui-body-inherit">'
+			 + "計：" + String(credit_num.getTotal())
+			 + '</li>'
+		);
 		
 		// 基盤教育の結果設定
+		/*
 		$('#popup p').html(
 			"基盤教育基礎科目 : "	+ String(credit_num.kiban_total)	+ "<br />"
 			+ "人文科目 : "			+ String(credit_num.humanity_total)	+ "<br />"
 			+ "社会科目："			+ String(credit_num.society_total)	+ "<br />"
 			+ "計 : " 				+ String(credit_num.getTotal())		+ "<br />"
 		);
+		*/
 		
 		// 基盤教育の未履修科目の設定
-		$('#popup #kiban_non_sbjs p').html(non_sbjs_msg);
+		//$('#popup #kiban_non_sbjs p').html(non_sbjs_msg);
 		
 	});
 });
 
-/*
+/*********************************
  * 基盤教育科目
- */
+ *********************************/
 $(function() {
 	/*** 初期化 ***/
 	var $container = $('#基盤教育科目');
@@ -80,7 +122,9 @@ $(function() {
 		}
 	}
 	
-	/*** イベント設定 ***/
+	/*==================*/
+	/*== イベント設定 ==*/
+	/*==================*/
 	// 基盤教育基礎科目のチェックボックスのイベント設定
 	$checkbox.change(function(){
 		for (var i = 0; i < checkbox_length; i++) {
@@ -96,10 +140,12 @@ $(function() {
 			credit_num.kiban_total -= parseInt($(this).attr('value'));
 		}
 	});
+	
 	// 基盤教育基礎科目（人文科目）のセレクトのイベント設定
 	$humanity_select.change(function(){
 		credit_num.humanity_total = parseInt($(this).val()) * 2;
 	});
+	
 	// 基盤教育基礎科目（社会科目）のセレクトのイベント設定
 	$society_select.change(function(){
 		console.log($(this).attr('name'));
@@ -108,20 +154,20 @@ $(function() {
 	});
 });
 
-/*
+/*********************************
  * 共通専門基礎科目
- */
+ *********************************/
 $(function() {
 });
 
-/*
+/*********************************
  * 専門必修科目
- */
+ *********************************/
 $(function() {
 });
 
-/*
- * 専門選択A郡
- */
+/*********************************
+ * 専門選択A群
+ *********************************/
 $(function() {
 });
