@@ -4,19 +4,16 @@ var credit_num = {
 	humanity_total : 0,					// 人文科目単位数
 	society_total : 0,					// 社会科学単位数
 	kiban_non_comp_sbjs : [0],			// 基盤教育 未履修科目
-	
 	cmn_pro_base_total : 0,				// 共通専門基礎科目単位数
 	cmn_pro_base_non_comp_sbjs : [0],	// 共通専門基礎 未履修科目
-	
 	pro_req_total : 0,					// 専門必修科目単位数
 	pro_req_non_comp_sbjs : [0],		// 専門必修科目 未履修科目
-	
 	pro_sel_A_total : 0,				// 専門選択A群単位数
 	pro_sel_A_non_comp_sbjs : [0],		// 専門選択A群 未履修科目
 	
 	// すべての単位数を合計する
 	getTotal : function() {
-		var total = this.kiban_total 
+		var total =   this.kiban_total 
 					+ this.humanity_total 
 					+ this.society_total
 					+ this.cmn_pro_base_total
@@ -35,6 +32,9 @@ $(function() {
 	/*============*/
 	var $tweet_btn = $('#tweet');
 	
+	/*==================*/
+	/*== イベント設定 ==*/
+	/*==================*/
 	$tweet_btn.click(function(){
 		window.open('http://twitter.com/home?status='
 		+ '取得単位数は' + credit_num.getTotal() + 'です．\n' 
@@ -51,18 +51,69 @@ $(function() {
 	/*============*/
 	/*== 初期化 ==*/
 	/*============*/
-	var $result = $('#result');
-	var $close_btn = $('#閉じる');
-	var $result_list = $('#集計結果');
+	var $result = $('#result');		
+	var $close_btn = $('#閉じる'); 
+	var $result_list = $('#集計結果'); 
 	
 	
 	/*==================*/
 	/*== イベント設定 ==*/
 	/*==================*/
-	// ダイアログのメッセージをセットする
+	// ボタンが押されたら，ダイアログのメッセージをセットする
 	$result.click(function () {
 	
+		// 		
+		$result_list.append(
+			'<li class="ui-first-child ui-li-static ui-body-inherit">'
+			 + "基盤教育基礎科目 : " + String(credit_num.kiban_total)
+			 + '</li>'
+		);
+		
+		// 
+		$result_list.append(
+			'<li class="ui-li-static ui-body-inherit">'
+			 + " ― 人文科目 : " + String(credit_num.humanity_total)
+			 + '</li>'
+		);
+		
+		// 
+		$result_list.append(
+			'<li class="ui-li-static ui-body-inherit">'
+			 + " ― 社会科目：" + String(credit_num.society_total)
+			 + '</li>'
+		);
+		
+		// 
+		$result_list.append(
+			'<li class="ui-li-static ui-body-inherit">'
+			 + "共通専門基礎科目：" + String(credit_num.cmn_pro_base_total)
+			 + '</li>'
+		);
+		
+		// 	
+		$result_list.append(
+			'<li class="ui-li-static ui-body-inherit">'
+			 + "専門必修科目：" + String(credit_num.pro_req_total)
+			 + '</li>'
+		);
+		
+		// 
+		$result_list.append(
+			'<li class="ui-li-static ui-body-inherit">'
+			 + "専門選択A群：" + String(credit_num.pro_sel_A_total)
+			 + '</li>'
+		);
+		
+		// 
+		$result_list.append(
+			'<li class="ui-last-child ui-li-static ui-body-inherit">'
+			 + "合計：" + String(credit_num.getTotal())
+			 + '</li>'
+		);
+		
+		
 		// 基盤教育の未履修科目を取得する
+		/*
 		var non_sbjs_msg = '';
 		var kiban_non_length = credit_num.kiban_non_comp_sbjs.length;
 		for (var i = 0; i < kiban_non_length; i++) {
@@ -71,54 +122,13 @@ $(function() {
 				non_sbjs_msg += credit_num.kiban_non_comp_sbjs[i] + "<br />"
 			}
 		}
-		
-		$result_list.append(
-			'<li class="ui-first-child ui-li-static ui-body-inherit">'
-			 + "基盤教育基礎科目 : " + String(credit_num.kiban_total)
-			 + '</li>'
-		);
-		
-		$result_list.append(
-			'<li class="ui-li-static ui-body-inherit">'
-			 + " ― 人文科目 : " + String(credit_num.humanity_total)
-			 + '</li>'
-		);
-		
-		$result_list.append(
-			'<li class="ui-li-static ui-body-inherit">'
-			 + " ― 社会科目：" + String(credit_num.society_total)
-			 + '</li>'
-		);
-		
-		$result_list.append(
-			'<li class="ui-li-static ui-body-inherit">'
-			 + "共通専門基礎科目：" + String(credit_num.cmn_pro_base_total)
-			 + '</li>'
-		);
-				
-		$result_list.append(
-			'<li class="ui-li-static ui-body-inherit">'
-			 + "専門必修科目：" + String(credit_num.pro_req_total)
-			 + '</li>'
-		);
-		
-		$result_list.append(
-			'<li class="ui-li-static ui-body-inherit">'
-			 + "専門選択A群：" + String(credit_num.pro_sel_A_total)
-			 + '</li>'
-		);
-		
-		$result_list.append(
-			'<li class="ui-last-child ui-li-static ui-body-inherit">'
-			 + "合計：" + String(credit_num.getTotal())
-			 + '</li>'
-		);
+		*/
 		
 		// 基盤教育の未履修科目の設定
 		//$('#popup #kiban_non_sbjs p').html(non_sbjs_msg);
 	});
 	
-	/* 閉じるボタンが押されたら，リストを空にする */
+	/* 閉じるボタンが押されたら，liを空にする */
 	$close_btn.click(function () {
 		$result_list.empty();
 	});
