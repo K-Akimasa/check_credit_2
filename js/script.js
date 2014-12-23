@@ -32,12 +32,11 @@ $(function() {
 $(function() {
 	/*** 初期化 ***/
 	var $result = $('#result');
-	
+	var $close_btn = $('#閉じる');
+	var $result_list = $('#集計結果');
 	
 	// ダイアログのメッセージをセットする
 	$result.click(function () {
-		/*** 初期化 ***/
-		var $result_list = $('#集計結果');
 	
 		// 基盤教育の未履修科目を取得する
 		var non_sbjs_msg = '';
@@ -48,19 +47,6 @@ $(function() {
 				non_sbjs_msg += credit_num.kiban_non_comp_sbjs[i] + "<br />"
 			}
 		}
-		
-		/*
-		var num = 5;
-		for (var i = 0; i <= num; i++) {
-			if (i === 0) {
-				$result_list.append('<li class="ui-first-child ui-li-static ui-body-inherit">' + i + '</li>');
-			} else if (i === num) {
-				$result_list.append('<li class="ui-last-child ui-li-static ui-body-inherit">' + i + '</li>');
-			} else {
-				$result_list.append('<li class="ui-li-static ui-body-inherit">' + i + '</li>');
-			}
-		}
-		*/
 		
 		$result_list.append(
 			'<li data-role="list-divider" role="heading" class="ui-li-divider ui-bar-inherit">'
@@ -86,20 +72,14 @@ $(function() {
 			 + '</li>'
 		);
 		
-		// 基盤教育の結果設定
-		/*
-		$('#popup p').html(
-			"基盤教育基礎科目 : "	+ String(credit_num.kiban_total)	+ "<br />"
-			+ "人文科目 : "			+ String(credit_num.humanity_total)	+ "<br />"
-			+ "社会科目："			+ String(credit_num.society_total)	+ "<br />"
-			+ "計 : " 				+ String(credit_num.getTotal())		+ "<br />"
-		);
-		*/
-		
 		// 基盤教育の未履修科目の設定
 		//$('#popup #kiban_non_sbjs p').html(non_sbjs_msg);
-		
 	});
+	
+	$close_btn.click(function () {
+		$result_list.empty();
+	});
+	
 });
 
 /*********************************
