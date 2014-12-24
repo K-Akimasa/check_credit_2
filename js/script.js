@@ -1,21 +1,25 @@
 /* 単位管理オブジェクト */
 var credit_num = {
-	kiban_total : 0,					// 基盤教育単位数
-	humanity_total : 0,					// 人文科目単位数
-	society_total : 0,					// 社会科学単位数
-	kiban_non_comp_sbjs : [0],			// 基盤教育 未履修科目
+	kiban_total : 0,						// 基盤教育単位数
+	humanity_total : 0,						// 人文科目単位数
+	society_total : 0,						// 社会科学単位数
+	kiban_non_comp_sbjs : [0],				// 基盤教育 未履修科目
 	
-	cmn_pro_base_total : 0,				// 共通専門基礎科目単位数
-	cmn_pro_base_non_comp_sbjs : [0],	// 共通専門基礎 未履修科目
+	cmn_pro_base_total : 0,					// 共通専門基礎科目【必修】単位数
+	cmn_pro_base_non_comp_sbjs : [0],		// 共通専門基礎 未履修科目
 	
-	pro_req_total : 0,					// 専門必修科目単位数
-	pro_req_non_comp_sbjs : [0],		// 専門必修科目 未履修科目
+	cmn_pro_base_othr_total : 0,			// 共通専門基礎科目【必修】単位数
 	
-	pro_sel_A_total : 0,				// 専門選択A群単位数
-	pro_sel_A_A_total : 0,				// 専門選択A群A単位数
-	pro_sel_A_B_total : 0,				// 専門選択A群B単位数
-	pro_sel_A_C_total : 0,				// 専門選択A群C単位数
-	pro_sel_A_non_comp_sbjs : [0],		// 専門選択A群 未履修科目
+	cmn_pro_total : 0,						// 共通専門科目単位数
+	
+	pro_req_total : 0,						// 専門必修科目単位数
+	pro_req_non_comp_sbjs : [0],			// 専門必修科目 未履修科目
+	
+	pro_sel_A_total : 0,					// 専門選択A群単位数
+	pro_sel_A_A_total : 0,					// 専門選択A群A単位数
+	pro_sel_A_B_total : 0,					// 専門選択A群B単位数
+	pro_sel_A_C_total : 0,					// 専門選択A群C単位数
+	pro_sel_A_non_comp_sbjs : [0],			// 専門選択A群 未履修科目
 	
 	// すべての単位数を合計する
 	getTotal : function() {
@@ -23,6 +27,8 @@ var credit_num = {
 					+ this.humanity_total 
 					+ this.society_total
 					+ this.cmn_pro_base_total
+					+ this.cmn_pro_base_othr_total
+					+ this.cmn_pro_total
 					+ this.pro_req_total
 					+ this.pro_sel_A_total;
 		return total;
@@ -61,14 +67,19 @@ $(function() {
 	var $close_btn = $('#閉じる'); 
 	
 	var $result_list = $('#集計結果'); 
+	
 	var $kiban_non_list = $('#基盤教育科目未履修');
-	var $cmn_pro_base_non_list = $('#共通専門基礎科目未履修');
+	
+	var $cmn_pro_base_non_list = $('#共通専門基礎科目【必修】未履修');
+	
 	var $pro_req_non_list = $('#専門必修科目未履修');
+	
 	var $pro_sel_A_non_list = $('#専門選択A群未履修');
 	
 	/* 各DOM */
 	var $kiban_chkbox = $('#基盤教育科目 :checkbox');
-	var $cmn_pro_base_chkbox = $('#共通専門基礎科目 :checkbox');
+	var $cmn_pro_base_chkbox = $('#共通専門基礎科目【必修】 :checkbox');
+	var $cmn_pro_base_othr_chkbox = $('#共通専門基礎科目 :checkbox');
 	var $pro_req_chkbox = $('#専門必修科目 :checkbox');
 	var $pro_sel_A_chkbox = $('#専門選択A群 :checkbox');
 		
@@ -95,10 +106,22 @@ $(function() {
 			 + " ― 社会科目：" + String(credit_num.society_total)
 			 + '</li>'
 		);
-		// 共通専門基礎科目
+		// 共通専門基礎科目【必修】
 		$result_list.append(
 			'<li class="ui-li-static ui-body-inherit">'
 			 + "共通専門基礎科目(必修)：<br />" + String(credit_num.cmn_pro_base_total) + " / 13"
+			 + '</li>'
+		);
+		// 共通専門基礎科目
+		$result_list.append(
+			'<li class="ui-li-static ui-body-inherit">'
+			 + "共通専門基礎科目：<br />" + String(credit_num.cmn_pro_base_othr_total)
+			 + '</li>'
+		);
+		// 共通専門科目
+		$result_list.append(
+			'<li class="ui-li-static ui-body-inherit">'
+			 + "共通専門科目：<br />" + String(credit_num.cmn_pro_total)
 			 + '</li>'
 		);
 		// 専門必修科目
@@ -110,7 +133,7 @@ $(function() {
 		// 専門選択A群
 		$result_list.append(
 			'<li class="ui-li-static ui-body-inherit">'
-			 + "専門選択A群： <br />" + String(credit_num.pro_sel_A_total) + " / 41"
+			 + "専門選択A群： <br />" + String(credit_num.pro_sel_A_total)
 			 + '</li>'
 		);
 		// 合計
@@ -148,7 +171,6 @@ $(function() {
 		
 		var pro_req_non_length = credit_num.pro_req_non_comp_sbjs.length;
 		console.log("専門必修 : " + pro_req_non_length);
-		
 		for (var i = 0; i < pro_req_non_length; i++) {
 			if (credit_num.pro_req_non_comp_sbjs[i]) {
 				$pro_req_non_list.append(
@@ -201,10 +223,6 @@ $(function() {
 			);
 		}
 		
-		// デバグプリント
-		console.log(credit_num.pro_sel_A_A_total);
-		console.log(credit_num.pro_sel_A_B_total);
-		console.log(credit_num.pro_sel_A_C_total);
 	});
 	
 	
@@ -278,13 +296,13 @@ $(function() {
 });
 
 /*********************************
- * 共通専門基礎科目
+ * 共通専門基礎科目【必修】
  *********************************/
 $(function() {
 	/*============*/
 	/*== 初期化 ==*/
 	/*============*/
-	var $container = $('#共通専門基礎科目');
+	var $container = $('#共通専門基礎科目【必修】');
 	var $checkbox = $container.find(':checkbox');
 	var checkbox_length = $checkbox.length;// チェックボックスの数
 	
@@ -313,6 +331,52 @@ $(function() {
 			credit_num.cmn_pro_base_total += parseInt($(this).attr('value'));
 		} else {
 			credit_num.cmn_pro_base_total -= parseInt($(this).attr('value'));
+		}
+	});
+});
+
+/*********************************
+ * 共通専門基礎科目
+ *********************************/
+$(function() {
+	/*============*/
+	/*== 初期化 ==*/
+	/*============*/
+	var $container = $('#共通専門基礎科目');
+	var $checkbox = $container.find(':checkbox');
+	var checkbox_length = $checkbox.length;// チェックボックスの数
+	
+	/*==================*/
+	/*== イベント設定 ==*/
+	/*==================*/
+	$checkbox.change(function(){
+		if ($(this).is(':checked')) {
+			credit_num.cmn_pro_base_othr_total += parseInt($(this).attr('value'));
+		} else {
+			credit_num.cmn_pro_base_othr_total -= parseInt($(this).attr('value'));
+		}
+	});
+});
+
+/*********************************
+ * 共通専門科目
+ *********************************/
+$(function() {
+	/*============*/
+	/*== 初期化 ==*/
+	/*============*/
+	var $container = $('#共通専門科目');
+	var $checkbox = $container.find(':checkbox');
+	var checkbox_length = $checkbox.length;// チェックボックスの数
+	
+	/*==================*/
+	/*== イベント設定 ==*/
+	/*==================*/
+	$checkbox.change(function(){
+		if ($(this).is(':checked')) {
+			credit_num.cmn_pro_total += parseInt($(this).attr('value'));
+		} else {
+			credit_num.cmn_pro_total -= parseInt($(this).attr('value'));
 		}
 	});
 });

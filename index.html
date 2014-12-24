@@ -42,8 +42,8 @@
 						<ul id="基盤教育科目未履修" data-role="listview" class="ui-listview ui-listview-inset ui-corner-all ui-shadow"></ul>
 					</div>
 					<div id="cmn_non_sbjs" data-role="collapsible">
-						<h3>共通専門基礎科目</h3>
-						<ul id="共通専門基礎科目未履修" data-role="listview" class="ui-listview ui-listview-inset ui-corner-all ui-shadow"></ul>
+						<h3>共通専門基礎科目【必修】</h3>
+						<ul id="共通専門基礎科目【必修】未履修" data-role="listview" class="ui-listview ui-listview-inset ui-corner-all ui-shadow"></ul>
 					</div>
 					<div id="pro_non_sbjs" data-role="collapsible">
 						<h3>専門必修科目</h3>
@@ -126,22 +126,138 @@
 			</div><!-- data-role="collapsible" -->
 		</div>
 		
+		<!-- 共通専門基礎科目【必修】 -->
+		<div id="共通専門基礎科目【必修】">
+			<div data-role="collapsible">
+				<h3>共通専門基礎科目【必修】</h3>
+				<fieldset data-role="controlgroup">
+					<!-- チェックボックス -->
+					<label for="線形代数及演習I">線形代数及演習I</label>
+					<input id="線形代数及演習I" name="線形代数及演習I" type="checkbox" value="3">
+					<label for="線形代数及演習II">線形代数及演習II</label>
+					<input id="線形代数及演習II" name="線形代数及演習II" type="checkbox" value="3">
+					<label for="常備分方程式及演習">常備分方程式及演習</label>
+					<input id="常備分方程式及演習" name="常備分方程式及演習" type="checkbox" value="3">
+					<label for="確率・統計I">確率・統計I</label>
+					<input id="確率・統計I" name="確率・統計I" type="checkbox" value="2">
+					<label for="創生工学実践">創生工学実践</label>
+					<input id="創生工学実践" name="創生工学実践" type="checkbox" value="2">
+				</fieldset>
+			</div>
+		</div>
+		
 		<!-- 共通専門基礎科目 -->
 		<div id="共通専門基礎科目">
 			<div data-role="collapsible">
 				<h3>共通専門基礎科目</h3>
 				<fieldset data-role="controlgroup">
 					<!-- チェックボックス -->
-					<label for="線形代数及演習I">線形代数及演習I</label>
-					<input id="線形代数及演習I" name="線形代数及演習I" type="checkbox" value="2">
-					<label for="線形代数及演習II">線形代数及演習II</label>
-					<input id="線形代数及演習II" name="線形代数及演習II" type="checkbox" value="2">
-					<label for="常備分方程式及演習">常備分方程式及演習</label>
-					<input id="常備分方程式及演習" name="常備分方程式及演習" type="checkbox" value="2">
-					<label for="確率・統計I">確率・統計I</label>
-					<input id="確率・統計I" name="確率・統計I" type="checkbox" value="2">
-					<label for="創生工学実践">創生工学実践</label>
-					<input id="創生工学実践" name="創生工学実践" type="checkbox" value="2">
+					<label for="複素関数論及演習">複素関数論及演習</label>
+					<input id="複素関数論及演習" name="複素関数論及演習" type="checkbox" value="3">
+					
+					<label for="偏微分方程式">偏微分方程式</label>
+					<input id="偏微分方程式" name="偏微分方程式" type="checkbox" value="2">
+					
+					<label for="振動論">振動論</label>
+					<input id="振動論" name="振動論" type="checkbox" value="2">
+					
+					<label for="確率・統計II">確率・統計II</label>
+					<input id="確率・統計II" name="確率・統計II" type="checkbox" value="2">
+					
+					<label for="情報理論">情報理論</label>
+					<input id="情報理論" name="情報理論" type="checkbox" value="2">
+					
+					<label for="数値解析学">数値解析学</label>
+					<input id="数値解析学" name="数値解析学" type="checkbox" value="2">
+					
+					<label for="波動・熱力学">波動・熱力学</label>
+					<input id="波動・熱力学" name="波動・熱力学" type="checkbox" value="2">
+					
+					<label for="基礎電磁気学">基礎電磁気学</label>
+					<input id="基礎電磁気学" name="基礎電磁気学" type="checkbox" value="2">
+					
+					<label for="量子物理学">量子物理学</label>
+					<input id="量子物理学" name="量子物理学" type="checkbox" value="2">
+					
+					<label for="統計物理学">統計物理学</label>
+					<input id="統計物理学" name="統計物理学" type="checkbox" value="2">
+					
+					<label for="物理学実験">物理学実験</label>
+					<input id="物理学実験" name="物理学実験" type="checkbox" value="1">
+					
+					<label for="基礎化学">基礎化学</label>
+					<input id="基礎化学" name="基礎化学" type="checkbox" value="2">
+					
+					<label for="基礎材料化学">基礎材料化学</label>
+					<input id="基礎材料化学" name="基礎材料化学" type="checkbox" value="2">
+					
+					<label for="工学日本語基礎I">工学日本語基礎I</label>
+					<input id="工学日本語基礎I" name="工学日本語基礎I" type="checkbox" value="1">
+					
+					<label for="工学日本語基礎II">工学日本語基礎II</label>
+					<input id="工学日本語基礎II" name="工学日本語基礎II" type="checkbox" value="1">
+					
+					<label for="工業日本語応用">工業日本語応用</label>
+					<input id="工業日本語応用" name="工業日本語応用" type="checkbox" value="2">
+					
+				</fieldset>
+			</div>
+		</div>
+		
+		<!-- 共通専門科目 -->
+		<div id="共通専門科目">
+			<div data-role="collapsible">
+				<h3>共通専門科目</h3>
+				<fieldset data-role="controlgroup">
+					<!-- チェックボックス -->
+					<label for="機械システム工学概論">機械システム工学概論</label>
+					<input id="機械システム工学概論" name="機械システム工学概論" type="checkbox" value="2">
+					
+					<label for="電気電子工学概論">電気電子工学概論</label>
+					<input id="電気電子工学概論" name="電気電子工学概論" type="checkbox" value="2">
+					
+					<label for="応用科学概論">応用科学概論</label>
+					<input id="応用科学概論" name="応用科学概論" type="checkbox" value="2">
+					
+					<label for="建設学概論">建設学概論</label>
+					<input id="建設学概論" name="建設学概論" type="checkbox" value="2">
+					
+					<label for="ものづくり実践講義">ものづくり実践講義</label>
+					<input id="ものづくり実践講義" name="ものづくり実践講義" type="checkbox" value="2">
+					
+					<label for="光科学入門">光科学入門</label>
+					<input id="光科学入門" name="光科学入門" type="checkbox" value="2">
+					
+					<label for="オプティクス">オプティクス</label>
+					<input id="オプティクス" name="オプティクス" type="checkbox" value="2">
+					
+					<label for="創成プロジェクト実践I">創成プロジェクト実践I</label>
+					<input id="創成プロジェクト実践I" name="創成プロジェクト実践I" type="checkbox" value="2">
+					
+					<label for="創成プロジェクト実践II">創成プロジェクト実践II</label>
+					<input id="創成プロジェクト実践II" name="創成プロジェクト実践II" type="checkbox" value="2">
+					
+					<label for="経営工学序論">経営工学序論</label>
+					<input id="経営工学序論" name="経営工学序論" type="checkbox" value="2">
+					
+					<label for="経営工学">経営工学</label>
+					<input id="経営工学" name="経営工学" type="checkbox" value="2">
+					
+					<label for="生産工学">生産工学</label>
+					<input id="生産工学" name="生産工学" type="checkbox" value="2">
+					
+					<label for="知的財産権・PL法">知的財産権・PL法</label>
+					<input id="知的財産権・PL法" name="知的財産権・PL法" type="checkbox" value="2">
+					
+					<label for="共創コーチング">共創コーチング</label>
+					<input id="共創コーチング" name="共創コーチング" type="checkbox" value="2">
+					
+					<label for="インターンシップA">インターンシップA</label>
+					<input id="インターンシップA" name="インターンシップA" type="checkbox" value="1">
+					
+					<label for="インターンシップB">インターンシップB</label>
+					<input id="インターンシップB" name="インターンシップB" type="checkbox" value="2">
+					
 				</fieldset>
 			</div>
 		</div>
