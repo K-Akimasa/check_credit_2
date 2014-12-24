@@ -181,8 +181,9 @@ $(function() {
 		$result_list.empty();
 		$kiban_non_list.empty();
 		$cmn_pro_base_non_list.empty();
-	});
-	
+		$pro_req_non_list.empty();
+		$pro_sel_A_non_list.empty();
+	});	
 });
 
 /* 各科目のイベント設定 */
@@ -295,9 +296,9 @@ $(function() {
 	
 	for (var i = 0; i < checkbox_length; i++) {
 		if (!$checkbox.eq(i).is(':checked')) {// チェックが入っていないならば
-			credit_num.cmn_pro_base_non_comp_sbjs[i] = $checkbox.eq(i).attr('name');
+			credit_num.pro_req_non_comp_sbjs[i] = $checkbox.eq(i).attr('name');
 		} else {// チェックが入っているならば
-			credit_num.cmn_pro_base_non_comp_sbjs[i] = '';
+			credit_num.pro_req_non_comp_sbjs[i] = '';
 		}
 	}
 	
