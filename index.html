@@ -38,19 +38,19 @@
 			<div id="未履修科目表示" style="padding: 5px;">
 				<fieldset data-role="controlgroup">
 					<div id="kiban_non_sbjs" data-role="collapsible">
-						<h3>基盤教育科目の未履修科目</h3>
+						<h3>基盤教育科目未履修科目</h3>
 						<ul id="基盤教育科目未履修" data-role="listview" class="ui-listview ui-listview-inset ui-corner-all ui-shadow"></ul>
 					</div>
 					<div id="cmn_non_sbjs" data-role="collapsible">
-						<h3>共通専門基礎科目【必修】</h3>
+						<h3>共通専門基礎科目【必修】未履修科目</h3>
 						<ul id="共通専門基礎科目【必修】未履修" data-role="listview" class="ui-listview ui-listview-inset ui-corner-all ui-shadow"></ul>
 					</div>
 					<div id="pro_non_sbjs" data-role="collapsible">
-						<h3>専門必修科目</h3>
+						<h3>専門必修科目未履修科目</h3>
 						<ul id="専門必修科目未履修" data-role="listview" class="ui-listview ui-listview-inset ui-corner-all ui-shadow"></ul>
 					</div>
 					<div id="a_non_sbjs" data-role="collapsible">
-						<h3>専門選択A群</h3>
+						<h3>専門選択A群未履修科目</h3>
 						<!-- 
 							<ul id="専門選択A群未履修" data-role="listview" class="ui-listview ui-listview-inset ui-corner-all ui-shadow"></ul>
 						-->
@@ -74,7 +74,8 @@
 	
 	<!-- メイン領域 -->
 	<div role="main" class="ui-content">
-	
+		<p>取得した科目にチェックを入れ，左上の“result”ボタンを押してください</p>
+		<p>ソースコードは<a href="https://github.com/K-Akimasa/check_credit_2" target="_blank">こちらです</a></p>
 		<!-- 基盤教育科目 -->
 		<div id="基盤教育科目">
 			<div data-role="collapsible">
@@ -102,10 +103,13 @@
 					<label for="微分積分学及演習I">微分積分学及演習I</label>
 					<input id="微分積分学及演習I" name="微分積分学及演習I" type="checkbox" value="3">
 					<label for="微分積分学及演習II">微分積分学及演習II</label>
-					<input id="微分積分学及演習II" name="微分積分学及演習II" type="checkbox" value="3">						
+					<input id="微分積分学及演習II" name="微分積分学及演習II" type="checkbox" value="3">	
+				</fieldset>					
 					<!-- セレクトボタン -->	
+					<!-- 人文科目 -->
+					<p>取得「科目数」を選択してください</p>
+				<fieldset data-role="controlgroup">
 					<label for="人文科目"></label>
-					<a data-rel="popup" href="#popup1">
 					<select id="人文科目" name="人文科目" data-iconpos="right">
 						<option value="0">人文科目</option>
 						<option value="1">1</option>
@@ -114,12 +118,9 @@
 						<option value="4">4</option>
 						<option value="5">5</option>
 						<option value="6">6</option>
-					</select><!-- 人文科目 -->
-					</a>
-					<div data-role="popup" id="popup1"><p>TEST1</p></div>
-					
+					</select>
+					<!-- 社会科学 -->
 					<label for="社会科学"></label>
-					<a data-rel="popup" href="#popup2">
 					<select id="社会科学" name="社会科学" data-iconpos="right">
 						<option value="0">社会科学</option>
 						<option value="1">1</option>
@@ -128,10 +129,7 @@
 						<option value="4">4</option>
 						<option value="5">5</option>
 						<option value="6">6</option>
-					</select><!-- 社会科学 -->
-					</a>
-					<div data-role="popup" id="popup2"><p>TEST2</p></div>
-					
+					</select>
 				</fieldset>
 			</div><!-- data-role="collapsible" -->
 		</div>
