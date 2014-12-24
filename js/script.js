@@ -12,6 +12,9 @@ var credit_num = {
 	pro_req_non_comp_sbjs : [0],		// 専門必修科目 未履修科目
 	
 	pro_sel_A_total : 0,				// 専門選択A群単位数
+	pro_sel_A_A_total : 0,				// 専門選択A群A単位数
+	pro_sel_A_B_total : 0,				// 専門選択A群B単位数
+	pro_sel_A_C_total : 0,				// 専門選択A群C単位数
 	pro_sel_A_non_comp_sbjs : [0],		// 専門選択A群 未履修科目
 	
 	// すべての単位数を合計する
@@ -77,7 +80,7 @@ $(function() {
 		// 基盤教育基礎科目
 		$result_list.append(
 			'<li class="ui-first-child ui-li-static ui-body-inherit">'
-			 + "基盤教育基礎科目 : " + String(credit_num.kiban_total)
+			 + "基盤教育基礎科目 : <br />" + String(credit_num.kiban_total) + " / 28"
 			 + '</li>'
 		);
 		// 人文科目
@@ -95,39 +98,27 @@ $(function() {
 		// 共通専門基礎科目
 		$result_list.append(
 			'<li class="ui-li-static ui-body-inherit">'
-			 + "共通専門基礎科目：" + String(credit_num.cmn_pro_base_total)
+			 + "共通専門基礎科目(必修)：<br />" + String(credit_num.cmn_pro_base_total) + " / 13"
 			 + '</li>'
 		);
 		// 専門必修科目
 		$result_list.append(
 			'<li class="ui-li-static ui-body-inherit">'
-			 + "専門必修科目：" + String(credit_num.pro_req_total)
+			 + "専門必修科目： <br />" + String(credit_num.pro_req_total) + " / 31"
 			 + '</li>'
 		);
 		// 専門選択A群
 		$result_list.append(
 			'<li class="ui-li-static ui-body-inherit">'
-			 + "専門選択A群：" + String(credit_num.pro_sel_A_total)
+			 + "専門選択A群： <br />" + String(credit_num.pro_sel_A_total) + " / 41"
 			 + '</li>'
 		);
 		// 合計
 		$result_list.append(
 			'<li class="ui-last-child ui-li-static ui-body-inherit">'
-			 + "合計：" + String(credit_num.getTotal())
+			 + "合計： <br />" + String(credit_num.getTotal()) + " / 124"
 			 + '</li>'
 		);
-		
-		// 基盤教育の未履修科目を取得する
-		/*
-		var non_sbjs_msg = '';
-		var kiban_non_length = credit_num.kiban_non_comp_sbjs.length;
-		for (var i = 0; i < kiban_non_length; i++) {
-			if (credit_num.kiban_non_comp_sbjs[i]) {
-				console.log(credit_num.kiban_non_comp_sbjs[i]);
-				non_sbjs_msg += credit_num.kiban_non_comp_sbjs[i] + "<br />"
-			}
-		}
-		*/
 		
 		var kiban_non_length = credit_num.kiban_non_comp_sbjs.length;
 		console.log("基盤 : " + kiban_non_length);
@@ -142,11 +133,10 @@ $(function() {
 			}
 		}
 		
-		
 		var cmn_pro_base_non_length = credit_num.cmn_pro_base_non_comp_sbjs.length;
 		console.log("共通専門 : " + cmn_pro_base_non_length);
 		
-		for (var i = 0; i < kiban_non_length; i++) {
+		for (var i = 0; i < cmn_pro_base_non_length; i++) {
 			if (credit_num.cmn_pro_base_non_comp_sbjs[i]) {
 				$cmn_pro_base_non_list.append(
 					'<li class="ui-li-static ui-body-inherit">'
@@ -159,7 +149,7 @@ $(function() {
 		var pro_req_non_length = credit_num.pro_req_non_comp_sbjs.length;
 		console.log("専門必修 : " + pro_req_non_length);
 		
-		for (var i = 0; i < kiban_non_length; i++) {
+		for (var i = 0; i < pro_req_non_length; i++) {
 			if (credit_num.pro_req_non_comp_sbjs[i]) {
 				$pro_req_non_list.append(
 					'<li class="ui-li-static ui-body-inherit">'
@@ -171,10 +161,52 @@ $(function() {
 		
 		var pro_sel_A_non_length = credit_num.pro_sel_A_non_comp_sbjs.length;
 		console.log("専門選択A群 : " + pro_sel_A_non_length);
+		console.log('専門選択A群 : ' + "\n");
+		for (var i = 0; i < pro_sel_A_non_length; i++) {
+			console.log(credit_num.pro_sel_A_non_comp_sbjs[i] + "\n");
+			//if ($pro_sel_A_chkbox.eq(i).attr('class')) {
+			//	console.log($pro_sel_A_chkbox.eq(i).attr('class') + "\n");
+			//}
+			
+		}
+		if (credit_num.pro_sel_A_A_total === 0) {
+			$pro_sel_A_non_list.append(
+				'<p>'
+				+ '以下の科目から1つ以上履修してください．<br />'
+				+ '・計算機システム序論<br />'
+				+ '・計算機アーキテクチャI<br />'
+				+ '・計算機アーキテクチャII<br />'
+				+ '</p>'
+			);
+		}
+			
+		if (credit_num.pro_sel_A_B_total === 0) {
+			$pro_sel_A_non_list.append(
+				'<p>'
+				+ '・以下の科目から1つ以上履修してください．<br />'
+				+ '・コンピュータネットワーク演習<br />'
+				+ '・情報伝送論<br />'
+				+ '・情報ネットワーク<br />'
+				+ '</p>'
+			);
+		}
+			
+		if (credit_num.pro_sel_A_C_total === 0) {
+			$pro_sel_A_non_list.append(
+				'<p>'
+				+ '以下の科目から1つ以上履修してください．<br />'
+				+ '・コンパイラ<br />'
+				+ '・プログラミング言語論<br />'
+				+ '</p>'
+			);
+		}
 		
-		// 基盤教育の未履修科目の設定
-		//$('#popup #kiban_non_sbjs p').html(non_sbjs_msg);
+		// デバグプリント
+		console.log(credit_num.pro_sel_A_A_total);
+		console.log(credit_num.pro_sel_A_B_total);
+		console.log(credit_num.pro_sel_A_C_total);
 	});
+	
 	
 	/* 閉じるボタンが押されたら，liを空にする */
 	$close_btn.click(function () {
@@ -186,8 +218,10 @@ $(function() {
 	});	
 });
 
-/* 各科目のイベント設定 */
 
+//////////////////////////
+// 各科目のイベント設定 //
+//////////////////////////
 /*********************************
  * 基盤教育科目
  *********************************/
@@ -353,8 +387,28 @@ $(function() {
 		}
 		if ($(this).is(':checked')) {
 			credit_num.pro_sel_A_total += parseInt($(this).attr('value'));
+			var cls_name = $(this).attr('class');
+			//console.log(cls_name);
+			
+			if (cls_name == 'a') {
+				credit_num.pro_sel_A_A_total++;
+			} else if (cls_name == 'b') {
+				credit_num.pro_sel_A_B_total++;
+			} else if (cls_name == 'c') {
+				credit_num.pro_sel_A_C_total++;
+			}
+			
 		} else {
 			credit_num.pro_sel_A_total -= parseInt($(this).attr('value'));
+			
+			if (cls_name == 'a') {
+				credit_num.pro_sel_A_A_total--;
+			} else if (cls_name == 'b') {
+				credit_num.pro_sel_A_B_total--;
+			} else if (cls_name == 'c') {
+				credit_num.pro_sel_A_C_total--;
+			}
+			
 		}
 	});
 });
