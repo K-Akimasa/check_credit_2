@@ -39,12 +39,9 @@ var credit_num = {
  * つぶやき
  *********************************/
 $(function() {
-	$tweet = $('#tweet');
-	console.dir($tweet);
-	var tweet_link ='http://twitter.com/home?status='+encodeURI(document.title)+'%20'+encodeURI(location.href)+'+%2523TEST';
-	console.log(tweet_link)
-	$tweet.attr('href', tweet_link);
+	
 });
+
 
 /*********************************
  * 集計結果のダイアログ表示設定
@@ -72,6 +69,8 @@ $(function() {
 	var $cmn_pro_base_othr_chkbox = $('#共通専門基礎科目 :checkbox');
 	var $pro_req_chkbox = $('#専門必修科目 :checkbox');
 	var $pro_sel_A_chkbox = $('#専門選択A群 :checkbox');
+	
+	$tweet = $('#tweet');
 		
 	/*==================*/
 	/*== イベント設定 ==*/
@@ -199,9 +198,11 @@ $(function() {
 			);
 		}
 		
-		//$tweet_link.attr('data-text', '取得単位数は' + credit_num.getTotal() + 'です');
+		var tweet_msg = '取得単位数は' + credit_num.getTotal() + 'です';
+		$tweet.append('<iframe id="twitter-widget-0" scrolling="no" frameborder="0" allowtransparency="true" src="https://platform.twitter.com/widgets/tweet_button.ff7d9077a26377d36b6a53b1a95be617.ja.html#_=1419575745134&amp;count=horizontal&amp;id=twitter-widget-0&amp;lang=ja&amp;original_referer=file%3A%2F%2F%2FUsers%2Faki%2Ftemplate.html&amp;size=m&amp;text=' + tweet_msg + '&amp;url=http%3A%2F%2Fk-akimasa.github.io%2Fcheck_credit_2%2F" class="twitter-share-button twitter-tweet-button twitter-share-button twitter-count-horizontal ui-btn ui-corner-all" title="Twitter Tweet Button" data-twttr-rendered="true" style="width: 133px; height: 20px;"></iframe>');
 		
 	});
+	
 	
 	
 	/* 閉じるボタンが押されたら，liを空にする */
@@ -211,7 +212,7 @@ $(function() {
 		$cmn_pro_base_non_list.empty();
 		$pro_req_non_list.empty();
 		$pro_sel_A_non_list.empty();
-		//$tweet_link.attr("data-text", '');
+		$tweet.empty();
 	});	
 });
 
