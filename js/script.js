@@ -198,7 +198,7 @@ $(function() {
 			);
 		}
 		
-		var tweet_msg = '取得単位数は' + credit_num.getTotal() + 'です';
+		var tweet_msg = '取得単位数は' + credit_num.getTotal() + 'です' + '　単位足りてる？';
 		$tweet.append('<iframe id="twitter-widget-0" scrolling="no" frameborder="0" allowtransparency="true" src="https://platform.twitter.com/widgets/tweet_button.ff7d9077a26377d36b6a53b1a95be617.ja.html#_=1419575745134&amp;count=horizontal&amp;id=twitter-widget-0&amp;lang=ja&amp;original_referer=file%3A%2F%2F%2FUsers%2Faki%2Ftemplate.html&amp;size=m&amp;text=' + tweet_msg + '&amp;url=http%3A%2F%2Fk-akimasa.github.io%2Fcheck_credit_2%2F" class="twitter-share-button twitter-tweet-button twitter-share-button twitter-count-horizontal ui-btn ui-corner-all" title="Twitter Tweet Button" data-twttr-rendered="true" style="width: 133px; height: 20px;"></iframe>');
 		
 	});
