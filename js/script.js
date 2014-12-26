@@ -4,17 +4,12 @@ var credit_num = {
 	humanity_total : 0,						// 人文科目単位数
 	society_total : 0,						// 社会科学単位数
 	kiban_non_comp_sbjs : [0],				// 基盤教育 未履修科目
-	
 	cmn_pro_base_total : 0,					// 共通専門基礎科目【必修】単位数
 	cmn_pro_base_non_comp_sbjs : [0],		// 共通専門基礎 未履修科目
-	
 	cmn_pro_base_othr_total : 0,			// 共通専門基礎科目【必修】単位数
-	
 	cmn_pro_total : 0,						// 共通専門科目単位数
-	
 	pro_req_total : 0,						// 専門必修科目単位数
 	pro_req_non_comp_sbjs : [0],			// 専門必修科目 未履修科目
-	
 	pro_sel_A_total : 0,					// 専門選択A群単位数
 	pro_sel_A_A_total : 0,					// 専門選択A群A単位数
 	pro_sel_A_B_total : 0,					// 専門選択A群B単位数
@@ -36,14 +31,6 @@ var credit_num = {
 };
 
 /*********************************
- * つぶやき
- *********************************/
-$(function() {
-	
-});
-
-
-/*********************************
  * 集計結果のダイアログ表示設定
  *********************************/
 $(function() {
@@ -52,25 +39,17 @@ $(function() {
 	/*============*/
 	var $result = $('#result');		
 	var $close_btn = $('#閉じる'); 
-	
 	var $result_list = $('#集計結果'); 
-	
 	var $kiban_non_list = $('#基盤教育科目未履修');
-	
 	var $cmn_pro_base_non_list = $('#共通専門基礎科目【必修】未履修');
-	
 	var $pro_req_non_list = $('#専門必修科目未履修');
-	
 	var $pro_sel_A_non_list = $('#専門選択A群未履修');
-		
-	/* 各DOM */
 	var $kiban_chkbox = $('#基盤教育科目 :checkbox');
 	var $cmn_pro_base_chkbox = $('#共通専門基礎科目【必修】 :checkbox');
 	var $cmn_pro_base_othr_chkbox = $('#共通専門基礎科目 :checkbox');
 	var $pro_req_chkbox = $('#専門必修科目 :checkbox');
 	var $pro_sel_A_chkbox = $('#専門選択A群 :checkbox');
-	
-	$tweet = $('#tweet');
+	var $tweet = $('#tweet');
 		
 	/*==================*/
 	/*== イベント設定 ==*/
@@ -199,7 +178,7 @@ $(function() {
 		}
 		
 		var tweet_msg = '取得単位数は' + credit_num.getTotal() + 'です' + '　単位足りてる？';
-		$tweet.append('<iframe id="twitter-widget-0" scrolling="no" frameborder="0" allowtransparency="true" src="https://platform.twitter.com/widgets/tweet_button.ff7d9077a26377d36b6a53b1a95be617.ja.html#_=1419575745134&amp;count=horizontal&amp;id=twitter-widget-0&amp;lang=ja&amp;original_referer=file%3A%2F%2F%2FUsers%2Faki%2Ftemplate.html&amp;size=m&amp;text=' + tweet_msg + '&amp;url=http%3A%2F%2Fk-akimasa.github.io%2Fcheck_credit_2%2F" class="twitter-share-button twitter-tweet-button twitter-share-button twitter-count-horizontal ui-btn ui-corner-all" title="Twitter Tweet Button" data-twttr-rendered="true" style="width: 133px; height: 20px;"></iframe>');
+		$tweet.append('<iframe id="twitter-widget-0" scrolling="no" frameborder="0" allowtransparency="true" src="https://platform.twitter.com/widgets/tweet_button.ff7d9077a26377d36b6a53b1a95be617.ja.html#_=1419575745134&amp;count=horizontal&amp;id=twitter-widget-0&amp;lang=ja&amp;original_referer=file%3A%2F%2F%2FUsers%2Faki%2Ftemplate.html&amp;size=m&amp;text=' + tweet_msg + '&amp;url=http%3A%2F%2Fk-akimasa.github.io%2Fcheck_credit_2%2F" class="ui-btn ui-corner-all" title="Twitter Tweet Button" data-twttr-rendered="true" style="width: 133px; height: 20px;"></iframe>');
 		
 	});
 	
@@ -269,8 +248,6 @@ $(function() {
 	
 	// 基盤教育基礎科目（社会科目）のセレクトのイベント設定
 	$society_select.change(function(){
-		//console.log($(this).attr('name'));
-		//console.log(parseInt($(this).val()));
 		credit_num.society_total = parseInt($(this).val()) * 2;
 	});
 });
@@ -432,7 +409,6 @@ $(function() {
 		if ($(this).is(':checked')) {
 			credit_num.pro_sel_A_total += parseInt($(this).attr('value'));
 			var cls_name = $(this).attr('class');
-			//console.log(cls_name);
 			
 			if (cls_name == 'a') {
 				credit_num.pro_sel_A_A_total++;
@@ -441,7 +417,6 @@ $(function() {
 			} else if (cls_name == 'c') {
 				credit_num.pro_sel_A_C_total++;
 			}
-			
 		} else {
 			credit_num.pro_sel_A_total -= parseInt($(this).attr('value'));
 			
