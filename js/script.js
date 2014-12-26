@@ -39,21 +39,11 @@ var credit_num = {
  * つぶやき
  *********************************/
 $(function() {
-	/*============*/
-	/*== 初期化 ==*/
-	/*============*/
-	var $tweet_btn = $('#tweet');
-	
-	/*==================*/
-	/*== イベント設定 ==*/
-	/*==================*/
-	$tweet_btn.click(function(){
-		window.open('http://twitter.com/home?status='
-		+ '取得単位数は' + credit_num.getTotal() + 'です．\n' 
-		+ encodeURI(document.title)
-		+ encodeURI(location.href),
-		'_blank');
-  	});
+	$tweet = $('#tweet');
+	console.dir($tweet);
+	var tweet_link ='http://twitter.com/home?status='+encodeURI(document.title)+'%20'+encodeURI(location.href)+'+%2523TEST';
+	console.log(tweet_link)
+	$tweet.attr('href', tweet_link);
 });
 
 /*********************************
@@ -75,7 +65,7 @@ $(function() {
 	var $pro_req_non_list = $('#専門必修科目未履修');
 	
 	var $pro_sel_A_non_list = $('#専門選択A群未履修');
-	
+		
 	/* 各DOM */
 	var $kiban_chkbox = $('#基盤教育科目 :checkbox');
 	var $cmn_pro_base_chkbox = $('#共通専門基礎科目【必修】 :checkbox');
@@ -143,9 +133,7 @@ $(function() {
 			 + '</li>'
 		);
 		
-		var kiban_non_length = credit_num.kiban_non_comp_sbjs.length;
-		console.log("基盤 : " + kiban_non_length);
-						
+		var kiban_non_length = credit_num.kiban_non_comp_sbjs.length;				
 		for (var i = 0; i < kiban_non_length; i++) {
 			if (credit_num.kiban_non_comp_sbjs[i]) {
 				$kiban_non_list.append(
@@ -157,8 +145,6 @@ $(function() {
 		}
 		
 		var cmn_pro_base_non_length = credit_num.cmn_pro_base_non_comp_sbjs.length;
-		console.log("共通専門 : " + cmn_pro_base_non_length);
-		
 		for (var i = 0; i < cmn_pro_base_non_length; i++) {
 			if (credit_num.cmn_pro_base_non_comp_sbjs[i]) {
 				$cmn_pro_base_non_list.append(
@@ -170,7 +156,6 @@ $(function() {
 		}		
 		
 		var pro_req_non_length = credit_num.pro_req_non_comp_sbjs.length;
-		console.log("専門必修 : " + pro_req_non_length);
 		for (var i = 0; i < pro_req_non_length; i++) {
 			if (credit_num.pro_req_non_comp_sbjs[i]) {
 				$pro_req_non_list.append(
@@ -182,15 +167,6 @@ $(function() {
 		}
 		
 		var pro_sel_A_non_length = credit_num.pro_sel_A_non_comp_sbjs.length;
-		console.log("専門選択A群 : " + pro_sel_A_non_length);
-		console.log('専門選択A群 : ' + "\n");
-		for (var i = 0; i < pro_sel_A_non_length; i++) {
-			console.log(credit_num.pro_sel_A_non_comp_sbjs[i] + "\n");
-			//if ($pro_sel_A_chkbox.eq(i).attr('class')) {
-			//	console.log($pro_sel_A_chkbox.eq(i).attr('class') + "\n");
-			//}
-			
-		}
 		if (credit_num.pro_sel_A_A_total === 0) {
 			$pro_sel_A_non_list.append(
 				'<p>'
@@ -223,6 +199,8 @@ $(function() {
 			);
 		}
 		
+		//$tweet_link.attr('data-text', '取得単位数は' + credit_num.getTotal() + 'です');
+		
 	});
 	
 	
@@ -233,6 +211,7 @@ $(function() {
 		$cmn_pro_base_non_list.empty();
 		$pro_req_non_list.empty();
 		$pro_sel_A_non_list.empty();
+		//$tweet_link.attr("data-text", '');
 	});	
 });
 
