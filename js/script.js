@@ -37,19 +37,22 @@ $(function() {
 	/*============*/
 	/*== 初期化 ==*/
 	/*============*/
-	var $result = $('#result');		
-	var $close_btn = $('#閉じる'); 
+	/* 結果表示DOM */
+	var $result = $('#result');
+	var $tweet = $('#tweet');	
+	var $close_btn = $('#閉じる');
+	 /* 各科目DOM */
 	var $result_list = $('#集計結果'); 
 	var $kiban_non_list = $('#基盤教育科目未履修');
 	var $cmn_pro_base_non_list = $('#共通専門基礎科目【必修】未履修');
 	var $pro_req_non_list = $('#専門必修科目未履修');
 	var $pro_sel_A_non_list = $('#専門選択A群未履修');
+	/* チェックボックス */
 	var $kiban_chkbox = $('#基盤教育科目 :checkbox');
 	var $cmn_pro_base_chkbox = $('#共通専門基礎科目【必修】 :checkbox');
 	var $cmn_pro_base_othr_chkbox = $('#共通専門基礎科目 :checkbox');
 	var $pro_req_chkbox = $('#専門必修科目 :checkbox');
 	var $pro_sel_A_chkbox = $('#専門選択A群 :checkbox');
-	var $tweet = $('#tweet');
 		
 	/*==================*/
 	/*== イベント設定 ==*/
@@ -406,28 +409,33 @@ $(function() {
 				credit_num.pro_sel_A_non_comp_sbjs[i] = '';
 			}
 		}
+		var cls_name = $(this).attr('class');
 		if ($(this).is(':checked')) {
 			credit_num.pro_sel_A_total += parseInt($(this).attr('value'));
-			var cls_name = $(this).attr('class');
-			
-			if (cls_name == 'a') {
-				credit_num.pro_sel_A_A_total++;
-			} else if (cls_name == 'b') {
-				credit_num.pro_sel_A_B_total++;
-			} else if (cls_name == 'c') {
-				credit_num.pro_sel_A_C_total++;
+			switch (cls_name) {
+				case 'a':
+					credit_num.pro_sel_A_A_total++;
+					break;
+				case 'b':
+					credit_num.pro_sel_A_B_total++;
+					break;
+				case 'c':
+					credit_num.pro_sel_A_C_total++;
+					break;
 			}
 		} else {
 			credit_num.pro_sel_A_total -= parseInt($(this).attr('value'));
-			
-			if (cls_name == 'a') {
-				credit_num.pro_sel_A_A_total--;
-			} else if (cls_name == 'b') {
-				credit_num.pro_sel_A_B_total--;
-			} else if (cls_name == 'c') {
-				credit_num.pro_sel_A_C_total--;
+			switch (cls_name) {
+				case 'a':
+					credit_num.pro_sel_A_A_total--;
+					break;
+				case 'b':
+					credit_num.pro_sel_A_B_total--;
+					break;
+				case 'c':
+					credit_num.pro_sel_A_C_total--;
+					break;
 			}
-			
 		}
 	});
 });
