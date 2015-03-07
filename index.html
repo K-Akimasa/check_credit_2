@@ -13,14 +13,29 @@
 <body>
 <!-- ページ領域 -->
 <div data-role="page" data-title="単位足りてる?">
-
 	<!-- ヘッダー領域 -->
 	<div data-role="header" data-theme="b" data-position="fixed">
 		<h1>単位足りてる?</h1>
 		<noscript>このページを利用するにはJavaScriptを有効にする必要があります．</noscript>
-		<a id="result" href="#popup" data-rel="popup" data-transition="flip" class="ui-btn ui-btn-a ui-btn-right">result</a>
+		<a href="#aboutpanel" data-inline="true" class="ui-btn ui-btn-b ui-corner-all ui-btn-left">About</a>
+		<a id="result" href="#popup" data-rel="popup" data-inline="true" data-transition="flip" class="ui-btn ui-btn-b ui-corner-all ui-btn-right">Check</a>
 	</div>
-		
+	
+	<!-- aboutpanel  -->
+	<div data-role="panel" id="aboutpanel" data-theme="b">
+	<div class="panel-content">
+		<h3>単位足りてる？<br/>にようこそ！</h3>
+		<p>単位取得数を調べるのが面倒くさい？そんなあなたのために，“単位足りてる？”はあるのです．</p>
+		<p>手軽に調べることができますよ！</p>
+		<p>まず基盤教育科目や共通専門科目といったパネルを選択し，あなたが取得した科目にチェックをつけていきます．</p>
+		<p>次に右上のCheckボタンを押してみましょう．すると…</p>
+		<p>ポップアップウィンドウが開き，あなたの単位取得数が表示されているではないですか？！</p>
+		<p>卒業に必要な単位をみたしている方はおめでとうございます！足りない方は頑張っていきましょう．</p>
+		<p>それでは，楽しい大学生活を！！！</p>
+		<a href="#home" data-rel="close" class="ui-btn ui-btn-b ui-corner-all" data-inline="true">Close</a>
+		</div>
+	</div><!-- aboutpanel -->
+	
 	<!-- ダイアログ風のポップアップ -->
 	<div id="popup" data-role="popup" data-overlay-theme="b" data-position-to="window" data-dismissible="false" style="width:100%;height:100%;">
 		<div data-role="header" data-theme="b">
@@ -60,17 +75,14 @@
 			<div class="ui-grid-solo">
 				<!-- 閉じるボタン -->			
 				<div class="ui-block-a">
-					<a id="閉じる" href="#" data-rel="back" class="ui-btn ui-corner-all">閉じる</a>
+					<a id="閉じる" data-rel="back" class="ui-btn ui-corner-all">閉じる</a>
 				</div>
 			</div>
 		</div>
 	</div>
 	
 	<!-- メイン領域 -->
-	<div role="main" class="ui-content">
-		<p>取得した科目にチェックを入れ，右上の“result”ボタンを押してください</p>
-		<p>ソースコードは<a href="https://github.com/K-Akimasa/check_credit_2" target="_blank">こちらです</a></p>
-		
+	<div role="main" class="ui-content">		
 		<!-- 基盤教育科目 -->
 		<div id="基盤教育科目">
 			<div data-role="collapsible">
@@ -101,9 +113,9 @@
 					<input id="微分積分学及演習II" name="微分積分学及演習II" type="checkbox" value="3">	
 				</fieldset>					
 				
-					<!-- セレクトボタン領域 -->	
-					<!-- 人文科目 -->
-					<p>取得「科目数」を選択してください</p>
+				<!-- セレクトボタン領域 -->	
+				<!-- 人文科目 -->
+				<p>取得「科目数」を選択してください</p>
 				<fieldset data-role="controlgroup">
 					<label for="人文科目"></label>
 					<select id="人文科目" name="人文科目" data-iconpos="right">
@@ -329,10 +341,9 @@
 	</div>
 	
 	<!-- フッター領域 -->
-	<div data-role="footer" data-theme="a" data-position="fixed">
-		Copyright 2014, K-Akimasa.</a>
+	<div data-role="footer" data-theme="b">
+		<a href="https://github.com/akimacho" data-ajax="false">Copyright 2015, Akimsa Kimura</a>
 	</div>
-
 </div>
 </body>
 </html>
