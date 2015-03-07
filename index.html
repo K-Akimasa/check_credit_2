@@ -44,13 +44,14 @@
 		<div role="main" class="ui-content">
 			<!-- 集計結果をここに表示する -->
 			<div class="ui-content">
-				<ul id="集計結果" data-role="listview" class="ui-listview ui-listview-inset ui-corner-all ui-shadow"></ul>
+				<ul id="集計結果" data-role="listview" class="ui-listview ui-listview-inset"></ul>
 			</div>
 			
 			<!-- 開閉可能なパネル -->
 			<!-- 未履修科目を表示する -->
-			<div id="未履修科目表示" style="padding: 5px;">
-				<fieldset data-role="controlgroup">
+			<div class="ui-content">
+				<div id="未履修科目表示">
+				<fieldset data-role="collapsible-set">
 					<div id="kiban_non_sbjs" data-role="collapsible">
 						<h3>基盤教育科目未履修科目</h3>
 						<ul id="基盤教育科目未履修" data-role="listview" class="ui-listview ui-listview-inset ui-corner-all ui-shadow"></ul>
@@ -69,9 +70,10 @@
 					</div>
 				</fieldset>
 			</div>
+			</div>
 			
 			<!--2ダイアログを閉じるためのボタン -->
-			<div class="ui-grid-solo">
+			<div class="ui-content ui-grid-solo">
 				<!-- 閉じるボタン -->			
 				<div class="ui-block-a">
 					<a id="閉じる" data-rel="back" class="ui-btn ui-corner-all">閉じる</a>
