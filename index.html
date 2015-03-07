@@ -19,24 +19,12 @@
 		<h1>単位足りてる?</h1>
 		<noscript>このページを利用するにはJavaScriptを有効にする必要があります．</noscript>
 		<a href="#aboutpanel" class="ui-btn ui-btn-b ui-corner-all ui-btn-left">About</a>
-		<a id="result" href="#popup" data-rel="popup" data-transition="flip" class="ui-btn ui-btn-b ui-corner-all ui-btn-right">Check</a>
+		<a id="result" href="#popup" data-rel="popup" data-transition="fade"  class="ui-btn ui-btn-b ui-corner-all ui-btn-right">Check</a>
 	</div>
 	
-	<!-- パネル領域  -->
-	<div data-role="panel" id="aboutpanel" data-theme="b">
-		<div class="panel-content">
-			<h3>単位足りてる？<br/>にようこそ！</h3>
-			<p>手軽に単位を調べましょう！</p>
-			<p>まず基盤教育科目や共通専門科目といったパネルを選択し，あなたが取得した科目にチェックをつけていきます．</p>
-			<p>次に右上のCheckボタンを押してみましょう．すると…ポップアップウィンドウが開き，あなたの単位取得数が表示されているではないですか？！</p>
-			<p>卒業に必要な単位をみたしている方はおめでとうございます！足りない方は頑張っていきましょう．</p>
-			<p>それでは，楽しい大学生活を！！！</p>
-			<a href="#home" data-rel="close" class="ui-btn ui-btn-b ui-corner-all" data-inline="true">Close</a>
-		</div>
-	</div>
-	
-	<!-- ダイアログ風のポップアップ -->
-	<div id="popup" data-role="popup" data-overlay-theme="b" data-position-to="window" data-dismissible="false" style="width:100%;height:100%;">
+	<!-- ポップアップ -->
+	<div id="popup" data-role="popup" data-overlay-theme="a" data-position-to="window" >
+		<!-- ポップアップヘッダ -->
 		<div data-role="header" data-theme="b">
 			<h1>結果</h1>
 		</div>
@@ -71,7 +59,19 @@
 			
 			<!-- 閉じるボタン -->			
 			<a id="閉じる" data-rel="back" class="ui-btn ui-corner-all">閉じる</a>
-			
+		</div>
+	</div>
+	
+	<!-- パネル領域  -->
+	<div data-role="panel" id="aboutpanel" data-theme="b">
+		<div class="panel-content">
+			<h3>単位足りてる？<br/>にようこそ！</h3>
+			<p>手軽に単位を調べましょう！</p>
+			<p>まず基盤教育科目や共通専門科目といったパネルを選択し，あなたが取得した科目にチェックをつけていきます．</p>
+			<p>次に右上のCheckボタンを押してみましょう．すると…ポップアップウィンドウが開き，あなたの単位取得数が表示されているではないですか？！</p>
+			<p>卒業に必要な単位をみたしている方はおめでとうございます！足りない方は頑張っていきましょう．</p>
+			<p>それでは，楽しい大学生活を！！！</p>
+			<a href="#home" data-rel="close" class="ui-btn ui-btn-b ui-corner-all" data-inline="true">Close</a>
 		</div>
 	</div>
 	
