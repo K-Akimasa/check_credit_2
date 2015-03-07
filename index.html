@@ -10,6 +10,7 @@
 	<script src="./js/jquery.mobile-1.4.5.min.js"></script>
 	<script src="./js/script.js"></script>
 </head>
+
 <body>
 <!-- ページ領域 -->
 <div data-role="page" data-title="単位足りてる?">
@@ -17,22 +18,20 @@
 	<div data-role="header" data-theme="b" data-position="fixed">
 		<h1>単位足りてる?</h1>
 		<noscript>このページを利用するにはJavaScriptを有効にする必要があります．</noscript>
-		<a href="#aboutpanel" data-inline="true" class="ui-btn ui-btn-b ui-corner-all ui-btn-left">About</a>
-		<a id="result" href="#popup" data-rel="popup" data-inline="true" data-transition="flip" class="ui-btn ui-btn-b ui-corner-all ui-btn-right">Check</a>
+		<a href="#aboutpanel" class="ui-btn ui-btn-b ui-corner-all ui-btn-left">About</a>
+		<a id="result" href="#popup" data-rel="popup" data-transition="flip" class="ui-btn ui-btn-b ui-corner-all ui-btn-right">Check</a>
 	</div>
 	
 	<!-- aboutpanel  -->
 	<div data-role="panel" id="aboutpanel" data-theme="b">
-	<div class="panel-content">
-		<h3>単位足りてる？<br/>にようこそ！</h3>
-		<p>単位取得数を調べるのが面倒くさい？そんなあなたのために，“単位足りてる？”はあるのです．</p>
-		<p>手軽に調べることができますよ！</p>
-		<p>まず基盤教育科目や共通専門科目といったパネルを選択し，あなたが取得した科目にチェックをつけていきます．</p>
-		<p>次に右上のCheckボタンを押してみましょう．すると…</p>
-		<p>ポップアップウィンドウが開き，あなたの単位取得数が表示されているではないですか？！</p>
-		<p>卒業に必要な単位をみたしている方はおめでとうございます！足りない方は頑張っていきましょう．</p>
-		<p>それでは，楽しい大学生活を！！！</p>
-		<a href="#home" data-rel="close" class="ui-btn ui-btn-b ui-corner-all" data-inline="true">Close</a>
+		<div class="panel-content">
+			<h3>単位足りてる？<br/>にようこそ！</h3>
+			<p>手軽に単位を調べましょう！</p>
+			<p>まず基盤教育科目や共通専門科目といったパネルを選択し，あなたが取得した科目にチェックをつけていきます．</p>
+			<p>次に右上のCheckボタンを押してみましょう．すると…ポップアップウィンドウが開き，あなたの単位取得数が表示されているではないですか？！</p>
+			<p>卒業に必要な単位をみたしている方はおめでとうございます！足りない方は頑張っていきましょう．</p>
+			<p>それでは，楽しい大学生活を！！！</p>
+			<a href="#home" data-rel="close" class="ui-btn ui-btn-b ui-corner-all" data-inline="true">Close</a>
 		</div>
 	</div><!-- aboutpanel -->
 	
