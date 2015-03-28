@@ -39,7 +39,7 @@ $(function() {
 	/*============*/
 	/* 結果表示DOM */
 	var $result = $('#result');
-	var $close_btn = $('#閉じる');
+	var $close_btn = $('.close_btn');
 	 /* 各科目DOM */
 	var $result_list = $('#集計結果'); 
 	var $kiban_non_list = $('#基盤教育科目未履修');
@@ -161,7 +161,7 @@ $(function() {
 		if (credit_num.pro_sel_A_B_total === 0) {
 			$pro_sel_A_non_list.append(
 				'<p>'
-				+ '・以下の科目から1つ以上履修してください．<br />'
+				+ '以下の科目から1つ以上履修してください．<br />'
 				+ '・コンピュータネットワーク演習<br />'
 				+ '・情報伝送論<br />'
 				+ '・情報ネットワーク<br />'
