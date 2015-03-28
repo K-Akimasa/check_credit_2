@@ -4,61 +4,21 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>単位足りてる?</title>
-  <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
-  <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
-  <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+	<link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+	<script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+	<script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
 	<script src="./js/script.js"></script>
 </head>
 
 <body>
 <!-- ページ領域 -->
-<div data-role="page" data-title="単位足りてる?">
+<div data-role="page" data-title="単位足りてる?" id="home">
 	<!-- ヘッダー領域 -->
 	<div data-role="header" data-theme="b" data-position="fixed">
 		<h1>単位足りてる?</h1>
 		<noscript>このページを利用するにはJavaScriptを有効にする必要があります．</noscript>
 		<a href="#aboutpanel" class="ui-btn ui-btn-b ui-corner-all ui-btn-left">About</a>
-		<a id="result" href="#popup" data-rel="popup" data-transition="fade"  class="ui-btn ui-btn-b ui-corner-all ui-btn-right">Check</a>
-	</div>
-	
-	<!-- ポップアップ -->
-	<div id="popup" data-role="popup" data-overlay-theme="a" data-position-to="window" >
-		<!-- ポップアップヘッダ -->
-		<div data-role="header" data-theme="b">
-			<h1>結果</h1>
-		</div>
-		
-		<!-- ポップアップメイン -->
-		<div role="main" class="ui-content">
-			<!-- 集計結果をここに表示する -->
-			<ul id="集計結果" data-role="listview" class="ui-listview ui-listview-inset"></ul>
-			
-			<!-- 開閉可能なパネル -->
-			<!-- 未履修科目を表示する -->
-			<div id="未履修科目表示">
-				<fieldset data-role="collapsible-set">
-					<div id="kiban_non_sbjs" data-role="collapsible">
-						<h3>基盤教育科目未履修科目</h3>
-						<ul id="基盤教育科目未履修" data-role="listview" class="ui-listview ui-listview-inset ui-corner-all ui-shadow"></ul>
-					</div>
-					<div id="cmn_non_sbjs" data-role="collapsible">
-						<h3>共通専門基礎科目【必修】未履修科目</h3>
-						<ul id="共通専門基礎科目【必修】未履修" data-role="listview" class="ui-listview ui-listview-inset ui-corner-all ui-shadow"></ul>
-					</div>
-					<div id="pro_non_sbjs" data-role="collapsible">
-						<h3>専門必修科目未履修科目</h3>
-						<ul id="専門必修科目未履修" data-role="listview" class="ui-listview ui-listview-inset ui-corner-all ui-shadow"></ul>
-					</div>
-					<div id="a_non_sbjs" data-role="collapsible">
-						<h3>専門選択A群未履修科目</h3>
-						<div id="専門選択A群未履修"></div>
-					</div>
-				</fieldset>
-			</div>
-			
-			<!-- 閉じるボタン -->			
-			<a id="閉じる" data-rel="back" class="ui-btn ui-corner-all">閉じる</a>
-		</div>
+		<a id="result" href="#popup" data-transition="fade"  class="ui-btn ui-btn-b ui-corner-all ui-btn-right">Check</a>
 	</div>
 	
 	<!-- パネル領域  -->
@@ -338,5 +298,42 @@
 		<a href="https://github.com/akimacho" data-ajax="false">Copyright 2015, Akimsa Kimura</a>
 	</div>
 </div>
+
+<!-- ポップアップ -->
+<div data-role="page" data-dialog="true" id="popup">
+	<!-- ポップアップヘッダ -->
+	<div data-role="header" data-theme="b">
+		<h1>結果</h1>
+	</div>
+	<!-- ポップアップメイン -->
+	<div role="main" class="ui-content">
+		<!-- 集計結果をここに表示する -->
+		<ul id="集計結果" data-role="listview" class="ui-listview ui-listview-inset"></ul>
+			
+		<!-- 開閉可能なパネル -->
+		<!-- 未履修科目を表示する -->
+		<div id="未履修科目表示">
+			<fieldset data-role="collapsible-set">
+				<div id="kiban_non_sbjs" data-role="collapsible">
+					<h3>基盤教育科目未履修科目</h3>
+					<ul id="基盤教育科目未履修" data-role="listview" class="ui-listview ui-listview-inset ui-corner-all ui-shadow"></ul>
+				</div>
+				<div id="cmn_non_sbjs" data-role="collapsible">
+					<h3>共通専門基礎科目【必修】未履修科目</h3>
+					<ul id="共通専門基礎科目【必修】未履修" data-role="listview" class="ui-listview ui-listview-inset ui-corner-all ui-shadow"></ul>
+				</div>
+				<div id="pro_non_sbjs" data-role="collapsible">
+					<h3>専門必修科目未履修科目</h3>
+					<ul id="専門必修科目未履修" data-role="listview" class="ui-listview ui-listview-inset ui-corner-all ui-shadow"></ul>
+				</div>
+				<div id="a_non_sbjs" data-role="collapsible">
+					<h3>専門選択A群未履修科目</h3>
+					<div id="専門選択A群未履修"></div>
+				</div>
+			</fieldset>
+		</div>
+	</div>
+</div><!-- popup -->
+
 </body>
 </html>

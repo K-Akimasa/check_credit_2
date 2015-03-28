@@ -58,12 +58,6 @@ $(function() {
 	/*==================*/
 	// resultボタンが押されたら，ダイアログのメッセージをセットする
 	$result.click(function () {
-		// 画面の設定
-		var max_height  = $(window).height() - 30;
-		$('#popup').css('max-height', max_height + 'px');
-		$('#popup').css('overflow-y', 'scroll');
-		
-		
 		// 基盤教育基礎科目
 		$result_list.append(
 			'<li class="ui-first-child ui-li-static ui-body-inherit">'
