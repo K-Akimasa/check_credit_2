@@ -1,20 +1,20 @@
 /* 単位管理オブジェクト */
 var credit_num = {
-	kiban_total : 0,						// 基盤教育単位数
-	humanity_total : 0,						// 人文科目単位数
-	society_total : 0,						// 社会科学単位数
-	kiban_non_comp_sbjs : [0],				// 基盤教育 未履修科目
-	cmn_pro_base_total : 0,					// 共通専門基礎科目【必修】単位数
-	cmn_pro_base_non_comp_sbjs : [0],		// 共通専門基礎 未履修科目
-	cmn_pro_base_othr_total : 0,			// 共通専門基礎科目【必修】単位数
-	cmn_pro_total : 0,						// 共通専門科目単位数
-	pro_req_total : 0,						// 専門必修科目単位数
-	pro_req_non_comp_sbjs : [0],			// 専門必修科目 未履修科目
-	pro_sel_A_total : 0,					// 専門選択A群単位数
-	pro_sel_A_A_total : 0,					// 専門選択A群A単位数
-	pro_sel_A_B_total : 0,					// 専門選択A群B単位数
-	pro_sel_A_C_total : 0,					// 専門選択A群C単位数
-	pro_sel_A_non_comp_sbjs : [0],			// 専門選択A群 未履修科目
+	kiban_total : 0, // 基盤教育単位数
+	humanity_total : 0,	// 人文科目単位数
+	society_total : 0, // 社会科学単位数
+	kiban_non_comp_sbjs : [0], // 基盤教育 未履修科目
+	cmn_pro_base_total : 0, // 共通専門基礎科目【必修】単位数
+	cmn_pro_base_non_comp_sbjs : [0], // 共通専門基礎 未履修科目
+	cmn_pro_base_othr_total : 0, // 共通専門基礎科目【必修】単位数
+	cmn_pro_total : 0, // 共通専門科目単位数
+	pro_req_total : 0, // 専門必修科目単位数
+	pro_req_non_comp_sbjs : [0], // 専門必修科目 未履修科目
+	pro_sel_A_total : 0,	// 専門選択A群単位数
+	pro_sel_A_A_total : 0, // 専門選択A群A単位数
+	pro_sel_A_B_total : 0, // 専門選択A群B単位数
+	pro_sel_A_C_total : 0, // 専門選択A群C単位数
+	pro_sel_A_non_comp_sbjs : [0], 	// 専門選択A群 未履修科目
 	
 	// すべての単位数を合計する
 	getTotal : function() {
