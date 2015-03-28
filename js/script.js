@@ -31,22 +31,14 @@ var credit_num = {
 };
 
 /*********************************
- * Viewの設定
- *********************************/
-$(function() {
-  $('#popup').css('overflow-y', 'scroll');
-});
-
-/*********************************
  * 集計結果のダイアログ表示設定
  *********************************/
 $(function() {
 	/*============*/
-	/*== 初期化 ==*/
+	/* 初期化
 	/*============*/
 	/* 結果表示DOM */
 	var $result = $('#result');
-	var $tweet = $('#tweet');	
 	var $close_btn = $('#閉じる');
 	 /* 各科目DOM */
 	var $result_list = $('#集計結果'); 
@@ -61,14 +53,17 @@ $(function() {
 	var $pro_req_chkbox = $('#専門必修科目 :checkbox');
 	var $pro_sel_A_chkbox = $('#専門選択A群 :checkbox');
 
-  
-  
 	/*==================*/
-	/*== イベント設定 ==*/
+	/* イベント設定
 	/*==================*/
-	
-	// ボタンが押されたら，ダイアログのメッセージをセットする
+	// resultボタンが押されたら，ダイアログのメッセージをセットする
 	$result.click(function () {
+		// 画面の設定
+		var max_height  = $(window).height() - 30;
+		$('#popup').css('max-height', max_height + 'px');
+		$('#popup').css('overflow-y', 'scroll');
+		
+		
 		// 基盤教育基礎科目
 		$result_list.append(
 			'<li class="ui-first-child ui-li-static ui-body-inherit">'
@@ -189,28 +184,21 @@ $(function() {
 				+ '</p>'
 			);
 		}
-		
-		var tweet_msg = '取得単位数は' + credit_num.getTotal() + 'です' + '　単位足りてる？';
-		$tweet.append('<iframe id="twitter-widget-0" scrolling="no" frameborder="0" allowtransparency="true" src="https://platform.twitter.com/widgets/tweet_button.ff7d9077a26377d36b6a53b1a95be617.ja.html#_=1419575745134&amp;count=horizontal&amp;id=twitter-widget-0&amp;lang=ja&amp;original_referer=file%3A%2F%2F%2FUsers%2Faki%2Ftemplate.html&amp;size=m&amp;text=' + tweet_msg + '&amp;url=http%3A%2F%2Fk-akimasa.github.io%2Fcheck_credit_2%2F" class="ui-btn ui-corner-all" title="Twitter Tweet Button" data-twttr-rendered="true" style="width: 133px; height: 20px;"></iframe>');
-		
 	});
 	
-	
-	
-	/* 閉じるボタンが押されたら，liを空にする */
+	/* 閉じるボタンが押されたら，liタグのDOMを空にする */
 	$close_btn.click(function () {
 		$result_list.empty();
 		$kiban_non_list.empty();
 		$cmn_pro_base_non_list.empty();
 		$pro_req_non_list.empty();
 		$pro_sel_A_non_list.empty();
-		$tweet.empty();
 	});	
 });
 
 
 //////////////////////////
-// 各科目のイベント設定 //
+// 各科目のイベント設定
 //////////////////////////
 /*********************************
  * 基盤教育科目
