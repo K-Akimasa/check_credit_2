@@ -30,6 +30,21 @@ var credit_num = {
 	}
 };
 
+function getRestCredits(total){
+
+	if (total < 124) {
+		return '卒業にはあと' + String(124 - total) + '単位必要です';
+	}
+	else {
+		return '卒業に必要な単位数を取得しています';
+	}
+}
+
+function getProgress(total){
+	var percent = Math.floor(total / 124 * 100);
+	return ('<label><progress value="' + percent + '" max="' + 100 + '"></progress> （' + percent + '%）</label>');
+}
+
 /*********************************
  * 集計結果のダイアログ表示設定
  *********************************/
@@ -39,6 +54,8 @@ $(function() {
 	/*============*/
 	/* 結果表示DOM */
 	var $result = $('#result');
+	var $rest_credits = $('#rest_credits');
+	var $progress = $('#progress');
 	var $close_btn = $('.close_btn');
 	 /* 各科目DOM */
 	var $result_list = $('#集計結果'); 
@@ -113,6 +130,14 @@ $(function() {
 			 + '</li>'
 		);
 		
+		// 進捗状況の表示
+		var rest_credits_str = getRestCredits(credit_num.getTotal());
+		$rest_credits.append(rest_credits_str);
+
+		var progress_str = getProgress(credit_num.getTotal());
+		$progress.append(progress_str);
+		
+		
 		var kiban_non_length = credit_num.kiban_non_comp_sbjs.length;				
 		for (var i = 0; i < kiban_non_length; i++) {
 			if (credit_num.kiban_non_comp_sbjs[i]) {
@@ -183,6 +208,8 @@ $(function() {
 	/* 閉じるボタンが押されたら，liタグのDOMを空にする */
 	$close_btn.click(function () {
 		$result_list.empty();
+		$rest_credits.empty();
+		$progress.empty();
 		$kiban_non_list.empty();
 		$cmn_pro_base_non_list.empty();
 		$pro_req_non_list.empty();
@@ -238,12 +265,12 @@ $(function() {
 	
 	// 基盤教育基礎科目（人文科目）のセレクトのイベント設定
 	$humanity_select.change(function(){
-		credit_num.humanity_total = parseInt($(this).val()) * 2;
+		credit_num.humanity_total = parseInt($(this).val()) * 1;
 	});
 	
 	// 基盤教育基礎科目（社会科目）のセレクトのイベント設定
 	$society_select.change(function(){
-		credit_num.society_total = parseInt($(this).val()) * 2;
+		credit_num.society_total = parseInt($(this).val()) * 1;
 	});
 });
 
