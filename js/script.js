@@ -71,12 +71,6 @@ $(function() {
 	var $cmn_pro_base_non_list = $('#共通専門基礎科目【必修】未履修');
 	var $pro_req_non_list = $('#専門必修科目未履修');
 	var $pro_sel_A_non_list = $('#専門選択A群未履修');
-	/* チェックボックス */
-	var $kiban_chkbox = $('#基盤教育科目 :checkbox');
-	var $cmn_pro_base_chkbox = $('#共通専門基礎科目【必修】 :checkbox');
-	var $cmn_pro_base_othr_chkbox = $('#共通専門基礎科目 :checkbox');
-	var $pro_req_chkbox = $('#専門必修科目 :checkbox');
-	var $pro_sel_A_chkbox = $('#専門選択A群 :checkbox');
 
 	/*==================*/
 	/* イベント設定
@@ -238,6 +232,7 @@ $(function() {
 	/*============*/
 	var $container = $('#基盤教育科目');
 	var $checkbox = $container.find(':checkbox');// チェックボックス
+	var $all_chk = $container.find('#kiban_all_chk');
 	var $humanity_select = $container.find('#人文科目');// セレクト
 	var $society_select = $container.find('#社会科学');// セレクト
 	var checkbox_length = $checkbox.length;// チェックボックスの数
@@ -253,8 +248,20 @@ $(function() {
 	}
 	
 	/*==================*/
-	/*== イベント設定 ==*/
+	/*== イベント設定
 	/*==================*/
+	$all_chk.on('click', function() {
+		console.log('ok');
+		var tmp = 0;
+		for (var i = 0; i < checkbox_length; i++) {
+			$checkbox.eq(i).prop('checked', true).checkboxradio('refresh');
+			if ($checkbox.eq(i).is(':checked')) {
+				tmp += parseInt($checkbox.eq(i).attr('value'));
+			}
+		}
+		credit_num.kiban_total = tmp;
+	});
+	
 	// 基盤教育基礎科目のチェックボックスのイベント設定
 	$checkbox.change(function(){
 		for (var i = 0; i < checkbox_length; i++) {
