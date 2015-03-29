@@ -19,10 +19,13 @@ http://akimacho.github.io/check_credit_2/
 
 ## Contributior
 
+以下、順不同。
+
 * 猫目のおおかみさん
 * @techpo__nn
 * satoshi
 * @kabemegane
+* @7mcdsk
 
 ## License
 
