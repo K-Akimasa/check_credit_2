@@ -323,6 +323,9 @@
 		
 		<ul data-role="listview" class="ui-listview ui-listview-inset ui-corner-all">
 			<li class="ui-first-child ui-body-inherit"><div id="rest_credits"></div></li>
+		</ul>
+		<p>卒業までの進捗度合いは以下のとおりです</p>
+		<ul data-role="listview" class="ui-listview ui-listview-inset ui-corner-all">
 			<li class="ui-first-child ui-body-inherit"><div id="progress"></div></li>
 		</ul>
 		
@@ -331,31 +334,26 @@
 		<!-- 開閉可能なパネル -->
 		<!-- 未履修科目を表示する -->
 		<div id="未履修科目表示">
-			<fieldset data-role="collapsible-set">
+			<div data-role="collapsible-set">
 				<div id="kiban_non_sbjs" data-role="collapsible">
 					<h3>基盤教育科目未履修科目</h3>
 					<ul id="基盤教育科目未履修" data-role="listview" class="ui-listview ui-listview-inset ui-corner-all ui-shadow"></ul>
 				</div>
-			</fieldset>
-			<fieldset data-role="collapsible-set">
 				<div id="cmn_non_sbjs" data-role="collapsible">
 					<h3>共通専門基礎科目【必修】未履修科目</h3>
 					<ul id="共通専門基礎科目【必修】未履修" data-role="listview" class="ui-listview ui-listview-inset ui-corner-all ui-shadow"></ul>
 				</div>
-			</fieldset>
-			<fieldset data-role="collapsible-set">
 				<div id="pro_non_sbjs" data-role="collapsible">
 					<h3>専門必修科目未履修科目</h3>
 					<ul id="専門必修科目未履修" data-role="listview" class="ui-listview ui-listview-inset ui-corner-all ui-shadow"></ul>
 				</div>
-			</fieldset>
-			<fieldset data-role="collapsible-set">
 				<div id="a_non_sbjs" data-role="collapsible">
 					<h3>専門選択A群未履修科目</h3>
 					<div id="専門選択A群未履修"></div>
 				</div>
-			</fieldset>
+			</div>
 		</div>
+		
 		<a id="result" href="#home" data-transition="fade" class="ui-btn ui-btn-b ui-corner-all close_btn">もどる</a>
 	</div>
 </div><!-- popup -->
