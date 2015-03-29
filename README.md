@@ -25,7 +25,7 @@ http://akimacho.github.io/check_credit_2/
 
 ## License
 
-[MIT License](https://github.com/akimacho/check_credit_2/LICENSE)
+[MIT License](https://github.com/akimacho/check_credit_2/blob/gh-pages/LICENSE)
 
 ## Author
 
