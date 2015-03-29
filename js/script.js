@@ -228,7 +228,7 @@ $(function() {
  *********************************/
 $(function() {
 	/*============*/
-	/*== 初期化 ==*/
+	/*== 初期化
 	/*============*/
 	var $container = $('#基盤教育科目');
 	var $checkbox = $container.find(':checkbox');// チェックボックス
@@ -251,7 +251,6 @@ $(function() {
 	/*== イベント設定
 	/*==================*/
 	$all_chk.on('click', function() {
-		console.log('ok');
 		var tmp = 0;
 		for (var i = 0; i < checkbox_length; i++) {
 			$checkbox.eq(i).prop('checked', true).checkboxradio('refresh');
@@ -294,10 +293,11 @@ $(function() {
  *********************************/
 $(function() {
 	/*============*/
-	/*== 初期化 ==*/
+	/*== 初期化
 	/*============*/
 	var $container = $('#共通専門基礎科目【必修】');
 	var $checkbox = $container.find(':checkbox');
+	var $all_chk = $container.find('#cmn_pro_all_chk');
 	var checkbox_length = $checkbox.length;// チェックボックスの数
 	
 	// 未履修科目配列credit_num.kiban_non_comp_sbjs[]の初期化
@@ -311,8 +311,19 @@ $(function() {
 	}
 	
 	/*==================*/
-	/*== イベント設定 ==*/
+	/*== イベント設定
 	/*==================*/
+	$all_chk.on('click', function() {
+		var tmp = 0;
+		for (var i = 0; i < checkbox_length; i++) {
+			$checkbox.eq(i).prop('checked', true).checkboxradio('refresh');
+			if ($checkbox.eq(i).is(':checked')) {
+				tmp += parseInt($checkbox.eq(i).attr('value'));
+			}
+		}
+		credit_num.cmn_pro_base_total = tmp;
+	});
+	
 	$checkbox.change(function(){
 		for (var i = 0; i < checkbox_length; i++) {
 			if (!$checkbox.eq(i).is(':checked')) {
@@ -357,14 +368,14 @@ $(function() {
  *********************************/
 $(function() {
 	/*============*/
-	/*== 初期化 ==*/
+	/*== 初期化
 	/*============*/
 	var $container = $('#共通専門科目');
 	var $checkbox = $container.find(':checkbox');
 	var checkbox_length = $checkbox.length;// チェックボックスの数
 	
 	/*==================*/
-	/*== イベント設定 ==*/
+	/*== イベント設定
 	/*==================*/
 	$checkbox.change(function(){
 		if ($(this).is(':checked')) {
@@ -380,10 +391,11 @@ $(function() {
  *********************************/
 $(function() {
 	/*============*/
-	/*== 初期化 ==*/
+	/*== 初期化
 	/*============*/
 	var $container = $('#専門必修科目');
 	var $checkbox = $container.find(':checkbox');
+	var $all_chk = $container.find('#pro_req_all_chk');
 	var checkbox_length = $checkbox.length;// チェックボックスの数
 	
 	for (var i = 0; i < checkbox_length; i++) {
@@ -395,8 +407,19 @@ $(function() {
 	}
 	
 	/*==================*/
-	/*== イベント設定 ==*/
+	/*== イベント設定
 	/*==================*/
+	$all_chk.on('click', function() {
+		var tmp = 0;
+		for (var i = 0; i < checkbox_length; i++) {
+			$checkbox.eq(i).prop('checked', true).checkboxradio('refresh');
+			if ($checkbox.eq(i).is(':checked')) {
+				tmp += parseInt($checkbox.eq(i).attr('value'));
+			}
+		}
+		credit_num.pro_req_total = tmp;
+	});
+	
 	$checkbox.change(function(){
 		for (var i = 0; i < checkbox_length; i++) {
 			if (!$checkbox.eq(i).is(':checked')) {
@@ -418,7 +441,7 @@ $(function() {
  *********************************/
 $(function() {
 	/*============*/
-	/*== 初期化 ==*/
+	/*== 初期化
 	/*============*/
 	var $container = $('#専門選択A群');
 	var $checkbox = $container.find(':checkbox');
@@ -433,7 +456,7 @@ $(function() {
 	}
 	
 	/*==================*/
-	/*== イベント設定 ==*/
+	/*== イベント設定
 	/*==================*/
 	$checkbox.change(function(){
 		for (var i = 0; i < checkbox_length; i++) {
