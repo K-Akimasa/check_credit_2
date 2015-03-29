@@ -256,6 +256,7 @@ $(function() {
 			$checkbox.eq(i).prop('checked', true).checkboxradio('refresh');
 			if ($checkbox.eq(i).is(':checked')) {
 				tmp += parseInt($checkbox.eq(i).attr('value'));
+				credit_num.kiban_non_comp_sbjs[i] = '';
 			}
 		}
 		credit_num.kiban_total = tmp;
@@ -319,6 +320,7 @@ $(function() {
 			$checkbox.eq(i).prop('checked', true).checkboxradio('refresh');
 			if ($checkbox.eq(i).is(':checked')) {
 				tmp += parseInt($checkbox.eq(i).attr('value'));
+				credit_num.cmn_pro_base_non_comp_sbjs[i] = ''
 			}
 		}
 		credit_num.cmn_pro_base_total = tmp;
@@ -415,6 +417,7 @@ $(function() {
 			$checkbox.eq(i).prop('checked', true).checkboxradio('refresh');
 			if ($checkbox.eq(i).is(':checked')) {
 				tmp += parseInt($checkbox.eq(i).attr('value'));
+				credit_num.pro_req_non_comp_sbjs[i] = ''
 			}
 		}
 		credit_num.pro_req_total = tmp;
