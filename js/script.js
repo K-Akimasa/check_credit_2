@@ -10,7 +10,7 @@ var credit_num = {
 	cmn_pro_total : 0, // 共通専門科目単位数
 	pro_req_total : 0, // 専門必修科目単位数
 	pro_req_non_comp_sbjs : [0], // 専門必修科目 未履修科目
-	pro_sel_A_total : 0,	// 専門選択A群単位数
+	pro_sel_A_total : 0, // 専門選択A群単位数
 	pro_sel_A_A_total : 0, // 専門選択A群A単位数
 	pro_sel_A_B_total : 0, // 専門選択A群B単位数
 	pro_sel_A_C_total : 0, // 専門選択A群C単位数
@@ -38,8 +38,8 @@ var credit_num = {
 	}
 };
 
+// 残り単位数を表す文字列を作る
 function getRestCredits(total){
-
 	if (total < 124) {
 		return '卒業にはあと' + String(124 - total) + '単位必要です';
 	}
@@ -48,6 +48,7 @@ function getRestCredits(total){
 	}
 }
 
+// プログレスバーを作るHTML文字列を作る
 function getProgress(total){
 	var percent = Math.floor(total / 124 * 100);
 	return ('<label><progress value="' + percent + '" max="' + 100 + '"></progress> （' + percent + '%）</label>');
@@ -132,14 +133,15 @@ $(function() {
 			 + '</li>'
 		);
 		
-		// 進捗状況の表示
+		// 残り単位数の表示
 		var rest_credits_str = getRestCredits(credit_num.getTotal());
 		$rest_credits.append(rest_credits_str);
 
+		// プログレスバーの表示
 		var progress_str = getProgress(credit_num.getTotal());
 		$progress.append(progress_str);
 		
-		
+		// 基盤教育科目未履修の表示
 		var kiban_non_length = credit_num.kiban_non_comp_sbjs.length;				
 		for (var i = 0; i < kiban_non_length; i++) {
 			if (credit_num.kiban_non_comp_sbjs[i]) {
@@ -151,6 +153,7 @@ $(function() {
 			}
 		}
 		
+		// 共通専門基礎科目【必修】の未履修科目の表示
 		var cmn_pro_base_non_length = credit_num.cmn_pro_base_non_comp_sbjs.length;
 		for (var i = 0; i < cmn_pro_base_non_length; i++) {
 			if (credit_num.cmn_pro_base_non_comp_sbjs[i]) {
@@ -162,6 +165,7 @@ $(function() {
 			}
 		}		
 		
+		// 専門必修科目未履修科の表示
 		var pro_req_non_length = credit_num.pro_req_non_comp_sbjs.length;
 		for (var i = 0; i < pro_req_non_length; i++) {
 			if (credit_num.pro_req_non_comp_sbjs[i]) {
@@ -173,6 +177,7 @@ $(function() {
 			}
 		}
 		
+		// 専門選択A群ハードウェア系未履修科目の表示
 		var pro_sel_A_non_length = credit_num.pro_sel_A_non_comp_sbjs.length;
 		if (credit_num.pro_sel_A_A_total === 0) {
 			$pro_sel_A_non_list.append(
@@ -184,7 +189,8 @@ $(function() {
 				+ '</p>'
 			);
 		}
-			
+		
+		// 専門選択A群ネットワーク系未履修科目の表示
 		if (credit_num.pro_sel_A_B_total === 0) {
 			$pro_sel_A_non_list.append(
 				'<p>'
@@ -195,7 +201,8 @@ $(function() {
 				+ '</p>'
 			);
 		}
-			
+		
+		// 専門選択A群言語系未履修科目の表示
 		if (credit_num.pro_sel_A_C_total === 0) {
 			$pro_sel_A_non_list.append(
 				'<p>'
@@ -207,7 +214,7 @@ $(function() {
 		}
 	});
 	
-	/* 閉じるボタンが押されたら，liタグのDOMを空にする */
+	/* 閉じるボタンが押されたら，各DOMの内容を空にする */
 	$close_btn.click(function () {
 		$result_list.empty();
 		$rest_credits.empty();
@@ -242,7 +249,8 @@ $(function() {
 	for (var i = 0; i < checkbox_length; i++) {
 		if (!$checkbox.eq(i).is(':checked')) {// チェックが入っていないならば
 			credit_num.kiban_non_comp_sbjs[i] = $checkbox.eq(i).attr('name');
-		} else {// チェックが入っているならば
+		}
+		else {// チェックが入っているならば
 			credit_num.kiban_non_comp_sbjs[i] = '';
 		}
 	}
@@ -250,11 +258,12 @@ $(function() {
 	/*==================*/
 	/*== イベント設定
 	/*==================*/
+	// 全チェックボタンがクリックされた時のイベント設定
 	$all_chk.on('click', function() {
 		var tmp = 0;
 		for (var i = 0; i < checkbox_length; i++) {
 			$checkbox.eq(i).prop('checked', true).checkboxradio('refresh');
-			if ($checkbox.eq(i).is(':checked')) {
+			if ($checkbox.eq(i).is(':checked')) {// チェックが入っているならば
 				tmp += parseInt($checkbox.eq(i).attr('value'));
 				credit_num.kiban_non_comp_sbjs[i] = '';
 			}
@@ -265,15 +274,17 @@ $(function() {
 	// 基盤教育基礎科目のチェックボックスのイベント設定
 	$checkbox.change(function(){
 		for (var i = 0; i < checkbox_length; i++) {
-			if (!$checkbox.eq(i).is(':checked')) {
+			if (!$checkbox.eq(i).is(':checked')) {// チェックが入っているならば
 				credit_num.kiban_non_comp_sbjs[i] = $checkbox.eq(i).attr('name');
-			} else {
+			}
+			else {
 				credit_num.kiban_non_comp_sbjs[i] = '';
 			}
 		}
-		if ($(this).is(':checked')) {
+		if ($(this).is(':checked')) {// チェックが入っているならば
 			credit_num.kiban_total += parseInt($(this).attr('value'));
-		} else {
+		}
+		else {
 			credit_num.kiban_total -= parseInt($(this).attr('value'));
 		}
 	});
@@ -304,9 +315,10 @@ $(function() {
 	// 未履修科目配列credit_num.kiban_non_comp_sbjs[]の初期化
 	// 最初はすべて未履修
 	for (var i = 0; i < checkbox_length; i++) {
-		if (!$checkbox.eq(i).is(':checked')) {// チェックが入っていないならば
+		if (!( $checkbox.eq(i).is(':checked') )) {// チェックが入っていないならば
 			credit_num.cmn_pro_base_non_comp_sbjs[i] = $checkbox.eq(i).attr('name');
-		} else {// チェックが入っているならば
+		}
+		else {// チェックが入っているならば
 			credit_num.cmn_pro_base_non_comp_sbjs[i] = '';
 		}
 	}
@@ -314,11 +326,12 @@ $(function() {
 	/*==================*/
 	/*== イベント設定
 	/*==================*/
+	// 全チェックボタンがクリックされた時のイベント設定
 	$all_chk.on('click', function() {
 		var tmp = 0;
 		for (var i = 0; i < checkbox_length; i++) {
 			$checkbox.eq(i).prop('checked', true).checkboxradio('refresh');
-			if ($checkbox.eq(i).is(':checked')) {
+			if ($checkbox.eq(i).is(':checked')) {// チェックが入っているならば
 				tmp += parseInt($checkbox.eq(i).attr('value'));
 				credit_num.cmn_pro_base_non_comp_sbjs[i] = ''
 			}
@@ -326,17 +339,20 @@ $(function() {
 		credit_num.cmn_pro_base_total = tmp;
 	});
 	
+	// 共通専門基礎科目【必修】のチェックボックスのイベント設定
 	$checkbox.change(function(){
 		for (var i = 0; i < checkbox_length; i++) {
-			if (!$checkbox.eq(i).is(':checked')) {
+			if (!$checkbox.eq(i).is(':checked')) {// チェックが入っているならば
 				credit_num.cmn_pro_base_non_comp_sbjs[i] = $checkbox.eq(i).attr('name');
-			} else {
+			}
+			else {
 				credit_num.cmn_pro_base_non_comp_sbjs[i] = '';
 			}
 		}
-		if ($(this).is(':checked')) {
+		if ($(this).is(':checked')) {// チェックが入っているならば
 			credit_num.cmn_pro_base_total += parseInt($(this).attr('value'));
-		} else {
+		}
+		else {
 			credit_num.cmn_pro_base_total -= parseInt($(this).attr('value'));
 		}
 	});
@@ -347,19 +363,21 @@ $(function() {
  *********************************/
 $(function() {
 	/*============*/
-	/*== 初期化 ==*/
+	/*== 初期化
 	/*============*/
 	var $container = $('#共通専門基礎科目');
 	var $checkbox = $container.find(':checkbox');
 	var checkbox_length = $checkbox.length;// チェックボックスの数
 	
 	/*==================*/
-	/*== イベント設定 ==*/
+	/*== イベント設定
 	/*==================*/
+	// 共通専門基礎科目のチェックボックスのイベント設定
 	$checkbox.change(function(){
-		if ($(this).is(':checked')) {
+		if ($(this).is(':checked')) {// チェックが入っているならば
 			credit_num.cmn_pro_base_othr_total += parseInt($(this).attr('value'));
-		} else {
+		}
+		else {
 			credit_num.cmn_pro_base_othr_total -= parseInt($(this).attr('value'));
 		}
 	});
@@ -379,10 +397,12 @@ $(function() {
 	/*==================*/
 	/*== イベント設定
 	/*==================*/
+	// 共通専門科目のチェックボックスのイベント設定
 	$checkbox.change(function(){
-		if ($(this).is(':checked')) {
+		if ($(this).is(':checked')) {// チェックが入っているならば
 			credit_num.cmn_pro_total += parseInt($(this).attr('value'));
-		} else {
+		}
+		else {
 			credit_num.cmn_pro_total -= parseInt($(this).attr('value'));
 		}
 	});
@@ -401,9 +421,10 @@ $(function() {
 	var checkbox_length = $checkbox.length;// チェックボックスの数
 	
 	for (var i = 0; i < checkbox_length; i++) {
-		if (!$checkbox.eq(i).is(':checked')) {// チェックが入っていないならば
+		if (!( $checkbox.eq(i).is(':checked') )) {// チェックが入っていないならば
 			credit_num.pro_req_non_comp_sbjs[i] = $checkbox.eq(i).attr('name');
-		} else {// チェックが入っているならば
+		}
+		else {// チェックが入っているならば
 			credit_num.pro_req_non_comp_sbjs[i] = '';
 		}
 	}
@@ -411,11 +432,12 @@ $(function() {
 	/*==================*/
 	/*== イベント設定
 	/*==================*/
+	// 全チェックボタンがクリックされた時のイベント設定
 	$all_chk.on('click', function() {
 		var tmp = 0;
 		for (var i = 0; i < checkbox_length; i++) {
 			$checkbox.eq(i).prop('checked', true).checkboxradio('refresh');
-			if ($checkbox.eq(i).is(':checked')) {
+			if ($checkbox.eq(i).is(':checked')) {// チェックが入っているならば
 				tmp += parseInt($checkbox.eq(i).attr('value'));
 				credit_num.pro_req_non_comp_sbjs[i] = ''
 			}
@@ -423,17 +445,20 @@ $(function() {
 		credit_num.pro_req_total = tmp;
 	});
 	
+	// 専門必修科目のチェックボックスのイベント設定
 	$checkbox.change(function(){
 		for (var i = 0; i < checkbox_length; i++) {
-			if (!$checkbox.eq(i).is(':checked')) {
+			if (!( $checkbox.eq(i).is(':checked') )) {// チェックが入っていないならば
 				credit_num.pro_req_non_comp_sbjs[i] = $checkbox.eq(i).attr('name');
-			} else {
+			}
+			else {
 				credit_num.pro_req_non_comp_sbjs[i] = '';
 			}
 		}
-		if ($(this).is(':checked')) {
+		if ($(this).is(':checked')) {// チェックが入っているならば
 			credit_num.pro_req_total += parseInt($(this).attr('value'));
-		} else {
+		}
+		else {
 			credit_num.pro_req_total -= parseInt($(this).attr('value'));
 		}
 	});
@@ -453,7 +478,8 @@ $(function() {
 	for (var i = 0; i < checkbox_length; i++) {
 		if (!$checkbox.eq(i).is(':checked')) {// チェックが入っていないならば
 			credit_num.pro_sel_A_non_comp_sbjs[i] = $checkbox.eq(i).attr('name');
-		} else {// チェックが入っているならば
+		}
+		else {// チェックが入っているならば
 			credit_num.pro_sel_A_non_comp_sbjs[i] = '';
 		}
 	}
@@ -461,17 +487,20 @@ $(function() {
 	/*==================*/
 	/*== イベント設定
 	/*==================*/
+	// 専門選択A群のチェックボックスのイベント設定
 	$checkbox.change(function(){
 		for (var i = 0; i < checkbox_length; i++) {
-			if (!$checkbox.eq(i).is(':checked')) {
+			if (!( $checkbox.eq(i).is(':checked') )) {// チェックが入っていないならば
 				credit_num.pro_sel_A_non_comp_sbjs[i] = $checkbox.eq(i).attr('name');
-			} else {
+			}
+			else {
 				credit_num.pro_sel_A_non_comp_sbjs[i] = '';
 			}
 		}
 		var cls_name = $(this).attr('class');
-		if ($(this).is(':checked')) {
+		if ($(this).is(':checked')) {// チェックが入っているならば
 			credit_num.pro_sel_A_total += parseInt($(this).attr('value'));
+			// ハード系・ネット系・言語系に応じてカウントする
 			switch (cls_name) {
 				case 'a':
 					credit_num.pro_sel_A_A_total++;
@@ -483,7 +512,8 @@ $(function() {
 					credit_num.pro_sel_A_C_total++;
 					break;
 			}
-		} else {
+		}
+		else {
 			credit_num.pro_sel_A_total -= parseInt($(this).attr('value'));
 			switch (cls_name) {
 				case 'a':
