@@ -16,9 +16,17 @@ var credit_num = {
 	pro_sel_A_C_total : 0, // 専門選択A群C単位数
 	pro_sel_A_non_comp_sbjs : [0], 	// 専門選択A群 未履修科目
 	
+	// 基盤教育の単位数を合計数
+	getKibanTotal : function() {
+		var kiban_total = this.kiban_total
+						+ this.humanity_total
+						+ this.society_total;
+		return kiban_total;
+	},
+	
 	// すべての単位数を合計する
 	getTotal : function() {
-		var total =   this.kiban_total 
+		var total = this.kiban_total 
 					+ this.humanity_total 
 					+ this.society_total
 					+ this.cmn_pro_base_total
@@ -78,7 +86,7 @@ $(function() {
 		// 基盤教育基礎科目
 		$result_list.append(
 			'<li class="ui-first-child ui-li-static ui-body-inherit">'
-			 + "基盤教育基礎科目 : <br />" + String(credit_num.kiban_total) + " / 28"
+			 + "基盤教育基礎科目 : <br />" + String(credit_num.getKibanTotal()) + " / 28"
 			 + '</li>'
 		);
 		// 人文科目
