@@ -22,6 +22,7 @@ http://akimacho.github.io/check_credit_2/
 * 猫目のおおかみさん
 * @techpo__nn
 * satoshi
+* @kabemegane
 
 ## License
 
