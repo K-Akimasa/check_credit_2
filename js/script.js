@@ -3,6 +3,7 @@ var credit_num = {
 	kiban_total : 0, // 基盤教育単位数
 	humanity_total : 0,	// 人文科目単位数
 	society_total : 0, // 社会科学単位数
+	science_total : 0, // 自然科学等の単位数
 	kiban_non_comp_sbjs : [0], // 基盤教育 未履修科目
 	cmn_pro_base_total : 0, // 共通専門基礎科目【必修】単位数
 	cmn_pro_base_non_comp_sbjs : [0], // 共通専門基礎 未履修科目
@@ -20,7 +21,8 @@ var credit_num = {
 	getKibanTotal : function() {
 		var kiban_total = this.kiban_total
 						+ this.humanity_total
-						+ this.society_total;
+						+ this.society_total
+						+ this.science_total;
 		return kiban_total;
 	},
 	
@@ -29,6 +31,7 @@ var credit_num = {
 		var total = this.kiban_total 
 					+ this.humanity_total 
 					+ this.society_total
+					+ this.science_total
 					+ this.cmn_pro_base_total
 					+ this.cmn_pro_base_othr_total
 					+ this.cmn_pro_total
@@ -96,6 +99,13 @@ $(function() {
 			 + " ― 社会科目：" + String(credit_num.society_total)
 			 + '</li>'
 		);
+		// 自然科学など
+		$result_list.append(
+      '<li class="ui-li-static ui-body-inherit">'
+			 + " ― 自然科学・情報科目：" + String(credit_num.science_total)
+			 + '</li>'
+		);
+		
 		// 共通専門基礎科目【必修】
 		$result_list.append(
 			'<li class="ui-li-static ui-body-inherit">'
@@ -126,6 +136,7 @@ $(function() {
 			 + "専門選択A群： <br />" + String(credit_num.pro_sel_A_total)
 			 + '</li>'
 		);
+		
 		// 合計
 		$result_list.append(
 			'<li class="ui-last-child ui-li-static ui-body-inherit">'
@@ -242,6 +253,7 @@ $(function() {
 	var $all_chk = $container.find('#kiban_all_chk');
 	var $humanity_select = $container.find('#人文科目');// セレクト
 	var $society_select = $container.find('#社会科学');// セレクト
+	var $science_select = $container.find('#自然科学・情報科目');// セレクト
 	var checkbox_length = $checkbox.length;// チェックボックスの数
 	
 	// 未履修科目配列credit_num.kiban_non_comp_sbjs[]の初期化
@@ -291,12 +303,17 @@ $(function() {
 	
 	// 基盤教育基礎科目（人文科目）のセレクトのイベント設定
 	$humanity_select.change(function(){
-		credit_num.humanity_total = parseInt($(this).val()) * 1;
+		credit_num.humanity_total = parseInt($(this).val()) * 2;
 	});
 	
 	// 基盤教育基礎科目（社会科目）のセレクトのイベント設定
 	$society_select.change(function(){
-		credit_num.society_total = parseInt($(this).val()) * 1;
+		credit_num.society_total = parseInt($(this).val()) * 2;
+	});
+	
+	// 基盤教育基礎科目（自然科学・情報科目）のセレクトのイベント設定
+	$science_select.change(function(){
+		credit_num.science_total = parseInt($(this).val()) * 2;
 	});
 });
 
